@@ -1,0 +1,39 @@
+{{!-- REVISAR ESTE APARTADO PARA CUANDO INSERTEMOS LA API PODER NOMBRAR BIEN CADA PARTE --}}
+
+
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h1>New Event</h1>
+            <hr>
+            <form action="/event/create" method="POST">
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Event Name</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="location" name="location">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <img src="INSERTAR IMAGEN">
+                            <input type="text" class="form-control" id="image" name="image">
+                        </div>
+                    </div>
+                </div>
+                <div class="d-grid mt-5">
+                    <button type="submit" class="btn btn-dark btn-lg">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
