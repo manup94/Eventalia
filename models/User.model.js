@@ -5,21 +5,49 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      trim: true,
-      required: false,
-      unique: true
+      required: true
     },
     email: {
       type: String,
-      required: true,
       unique: true,
-      lowercase: true,
-      trim: true
+      required: true
+    },
+    avatar: {
+      type: String,
+      default: 'https://i.stack.imgur.com/l60Hf.png'
+    },
+    interest: {
+      type: [String],
+      enum: ['Music', 'Gastronomy', 'Sports', 'Social'],
+      default: 'No interest',
+      required: false
+    },
+    favorites: [{
+      type: Schema.Types.ObjectId,
+      default: 'No interest yet',
+      ref: 'Event'
+    }]
+    ,
+    address: {
+      city: {
+        type: String,
+        required: true
+      },
+      zipcode: {
+        type: String,
+        required: true
+      }
+    },
+    role: {
+      type: String,
+      enum: ['USER', 'ADMIN'],
+      default: 'USER'
     },
     password: {
       type: String,
       required: true
     }
+
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
