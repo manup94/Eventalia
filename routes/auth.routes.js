@@ -1,6 +1,7 @@
 const express = require('express');
-const router = express.Router();
+const router = require("express").Router()
 const User = require("../models/User.model")
+
 
 const bcrypt = require('bcryptjs')
 const saltRounds = 10
@@ -13,19 +14,46 @@ router.post('/signup', (req, res, next) => {
 
     const { email, userPwd, username, avatar, interest } = req.body
     const address = {
-        city: req.body.address.city,
-        zipcode: req.body.address.zipcode
+        city: req.body.city,
+        zipcode: req.body.zipcode
     }
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(userPwd, salt))
-        .then(hashedPassword => User.create({ email, username, avatar, interest, password: hashedPassword }, { address }))
+        .then(hashedPassword => User.create({ email, username, avatar, interest, password: hashedPassword, address }))
         .then(createdUser => res.redirect('/login'))
         .catch(error => next(error))
 })
 
 //Login//
+//render
 router.get('/login', (req, res, next) => res.render('auth/login'))
+//handler
+router.post('/login', (req, res, next) => {
+
+    const { email, userPwd } = req.body
+
+    User
+        .findOne({ email })
+        .then(user => {
+            if (!user) {
+                res.render('auth/login', { errorMessage: 'Email no registrado en la Base de Datos' })
+                return
+            } else if (bcrypt.compareSync(userPwd, user.password) === false) {
+                res.render('auth/login', { errorMessage: 'La contraseña es incorrecta' })
+                return
+            } else {
+                req.session.currentUser = user
+                res.redirect('/')
+            }
+        })
+        .catch(error => next(error))
+})
+
+//Logout
+router.post('/logout', (req, res, next) => {
+    req.session.destroy(() => res.redirect('/index'))
+})
 
 
 

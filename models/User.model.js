@@ -30,11 +30,11 @@ const userSchema = new Schema(
     address: {
       city: {
         type: String,
-        required: true
+
       },
       zipcode: {
         type: String,
-        required: true
+
       }
     },
     role: {
