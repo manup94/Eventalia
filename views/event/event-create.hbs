@@ -1,8 +1,6 @@
 {{!-- REVISAR ESTE APARTADO PARA CUANDO INSERTEMOS LA API PODER NOMBRAR BIEN CADA PARTE --}}
 
 
-
-
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -10,23 +8,55 @@
             <hr>
             <form action="/event/create" method="POST">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-6">
                         <div class="mb-3">
-                            <label for="name" class="form-label">Event Name</label>
-                            <input type="text" class="form-control" id="name" name="name">
+                            <label for="title" class="form-label">Event Title</label>
+                            <input type="text" class="form-control" id="title" name="title">
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-5">
                         <div class="mb-3">
-                            <label for="location" class="form-label">Location</label>
-                            <input type="text" class="form-control" id="location" name="location">
+                            <label for="category" class="form-label">Category</label>
+                            <input type="text" class="form-control" id="category" name="category">
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-10">
                         <div class="mb-3">
-                            <label for="image" class="form-label">Image</label>
-                            <img src="INSERTAR IMAGEN">
-                            <input type="text" class="form-control" id="image" name="image">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" name="description">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="mb-3">
+                            <label for="start" class="form-label">Start</label>
+                            <input type="date" class="form-control" id="start" name="start">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="mb-3">
+                            <label for="end" class="form-label">End</label>
+                            <input type="date" class="form-control" id="end" name="end">
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <h3>Location:</h3>
+                        <div class="mb-2">
+                            <label for="city" class="form-label">City</label>
+                            <input type="text" class="form-control" id="city" name="city">
+                        </div>
+                        <div class="mb-2">
+                            <label for="lat" class="form-label">Latitude</label>
+                            <input type="text" class="form-control" id="lat" name="lat">
+                        </div>
+                        <div class="mb-2">
+                            <label for="lng" class="form-label">Longitude</label>
+                            <input type="text" class="form-control" id="lng" name="lng">
+                        </div>
+                    </div>
+                    <div class="col-10">
+                        <div class="mb-3">
+                            <label for="eventImg" class="form-label">Image</label>
+                            <input type="text" class="form-control" id="eventImg" name="eventImg">
                         </div>
                     </div>
                 </div>

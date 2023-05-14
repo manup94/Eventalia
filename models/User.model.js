@@ -19,7 +19,6 @@ const userSchema = new Schema(
     interest: {
       type: [String],
       enum: ['Music', 'Gastronomy', 'Sports', 'Social'],
-      default: 'No interest',
       required: false
     },
     favorites: [{
