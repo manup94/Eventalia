@@ -16,14 +16,15 @@ Theres are the endpoints that we are going to use in our proyect:
 | METHOD | PATH | Description | JSON |
 | ---    | ---  | -----       | ---  |
 | GET    | `/`    | Index |     |      |
+| GET    | `/user/profile`    | Profile |     |      |
 | GET    | `/auth/signup` | Sign up | |
 | POST   | `/auth/signup` | Sign up | |
 | GET    | `/auth/login` | Log in | |
 | POST   | `/auth/login` | Log in | |
 | GET    | `/auth/logout` | Log out | |
 | GET    | `/event/list` | Event list | |
-| GET    | `/event/create` | New event render | |
-| POST   | `/event/create` | New event handler | |
+| GET    | `/event/event-create` | New event render | |
+| POST   | `/event/event-create` | New event handler | |
 | GET    | `/event/:_id` | Event details | |
 | GET    | `/event/:_id/edit` | Edit event render | |
 | POST   | `/event/:_id/edit` | Edit event handler | |

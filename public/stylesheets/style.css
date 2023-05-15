@@ -1,11 +1,7 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
-
-}
-
-h1 {
-  color: 15px;
+  background-image: url(https://wallpapercave.com/wp/wp1889538.jpg);
+  background-size: 100%;
 }
 
 .logo-img {
@@ -14,9 +10,11 @@ h1 {
   border-radius: 50%;
 }
 
-.index-btn {}
-
 .header-img {
-  width: 100%;
+  width: 50%;
 
+}
+
+.container {
+  background-color: azure;
 }

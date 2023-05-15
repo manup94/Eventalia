@@ -45,7 +45,9 @@ router.post('/event/create', (req, res, next) => {
 
 })
 
-
-
+//Perfil
+router.get('/user/profile', (req, res, next) => {
+    res.render('user/profile')
+})
 
 module.exports = router;

@@ -1,12 +1,13 @@
 {{!-- REVISAR ESTE APARTADO PARA CUANDO INSERTEMOS LA API PODER NOMBRAR BIEN CADA PARTE --}}
 
-
+<br>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
+            <br>
             <h1>New Event</h1>
             <hr>
-            <form action="/event/create" method="POST">
+            <form action="/event/event-create" method="POST">
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
@@ -61,9 +62,12 @@
                     </div>
                 </div>
                 <div class="d-grid mt-5">
-                    <button type="submit" class="btn btn-dark btn-lg">Create Event</button>
+                    <a href="/" class="btn btn-dark btn-lg">Create Event</a>
+                    <br>
+                    {{!-- <button type="submit" class="btn btn-dark btn-lg">Create Event</button> --}}
                 </div>
             </form>
         </div>
     </div>
 </div>
+<br>
