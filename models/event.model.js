@@ -23,25 +23,18 @@ const eventSchema = new Schema(
             type: Date,
             required: true
         },
+
         location: {
-            city: {
+            type: {
                 type: String
             },
-            geometry: [{
-                lat: {
-                    type: String
-                },
-                lng: {
-                    type: String
-                }
-            }]
+            coordinates: [Number]
         },
         eventImg: {
             type: String
         },
-        favorites: [{
+        assistants: [{
             type: Schema.Types.ObjectId,
-            default: 'No favorites yet',
             ref: 'User'
         }]
     }

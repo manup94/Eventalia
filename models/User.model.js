@@ -16,25 +16,18 @@ const userSchema = new Schema(
       type: String,
       default: 'https://i.stack.imgur.com/l60Hf.png'
     },
-    interest: {
-      type: [String],
-      enum: ['Music', 'Gastronomy', 'Sports', 'Social'],
-      required: false
-    },
-    favorites: [{
-      type: Schema.Types.ObjectId,
-      default: 'No interest yet',
-      ref: 'Event'
-    }]
-    ,
+    interests: [
+      {
+        type: String,
+        enum: ['Music', 'Gastronomy', 'Sports', 'Social']
+      }
+    ],
     address: {
       city: {
         type: String,
-
       },
       zipcode: {
         type: String,
-
       }
     },
     role: {
@@ -46,10 +39,8 @@ const userSchema = new Schema(
       type: String,
       required: true
     }
-
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
     timestamps: true
   }
 );
