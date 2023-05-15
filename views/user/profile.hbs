@@ -1,29 +1,3 @@
-{{!-- <div class="container row">
-    <div class="col">
-        <br>
-        <h2>HELLO {{username}}</h2>
-    </div>
-    <div class="col">
-        <br>
-        <h3>Eventos Guardados</h3>
-        <p>Próximamente eventos guardados</p>
-    </div>
-    <div class="col">
-        <img src="https://ionicframework.com/docs/img/demos/avatar.svg" style="width: 20%" alt="#">
-    </div>
-    <div class="col">
-        <h3>Información</h3>
-        <ul>
-            <li>{{username}}pepito1234</li>
-            <li>{{email}}pepito@correo.com</li>
-            <li>{{address}}Calle Falsa 1234</li>
-            <li>{{interests}}Music</li>
-            <li>{{role}}User</li>
-        </ul>
-    </div>
-</div>
-<br> --}}
-
 <br>
 <div class="container">
     <br>
@@ -31,20 +5,22 @@
     <hr>
     <div class="row">
         <div class="col-md-4">
-            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" style="width: 60%" alt="#">
+            <img src="{{avatar}}" style="width: 60%" alt="#">
         </div>
         <div class="col">
             <h3>Información:</h3>
             <ul>
-                <li> <strong>Username:</strong>{{username}} pepito1234</li>
+                <li> <strong>Username:</strong> {{username}} </li>
                 <br>
-                <li><strong>Email:</strong>{{email}} pepito@correo.com</li>
+                <li><strong>Email:</strong> {{email}}</li>
                 <br>
-                <li><strong>Address:</strong>{{address}} Calle Falsa 1234</li>
+                <li><strong>city:</strong> {{address.city}}</li>
                 <br>
-                <li><strong>Interests:</strong>{{interests}} Music</li>
+                <li><strong>zipcode:</strong> {{address.zipcode}}</li>
                 <br>
-                <li><strong>Role:</strong>{{role}} User</li>
+                <li><strong>Interests:</strong> {{interests}}</li>
+                <br>
+                <li><strong>Role:</strong> {{role}}</li>
             </ul>
         </div>
         <hr>
@@ -61,6 +37,6 @@
         <a href="/event/:_id/edit" class="btn btn-warning mt-3 mb-5">Edit</a>
     </div>
     <div class="btn">
-        <a href="/event/:_id/deletet" class="btn btn-danger mt-3 mb-5">Delete</a>
+        <a href="/event/:_id/delete" class="btn btn-danger mt-3 mb-5">Delete</a>
     </div>
 </div>
