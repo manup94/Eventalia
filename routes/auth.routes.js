@@ -13,9 +13,8 @@ router.get('/auth/signup', (req, res, next) => res.render('auth/signup'))
 //handler
 router.post('/auth/signup', (req, res, next) => {
 
-    console.log('estoy en post /auth/signup')
 
-    const { email, userPwd, username, avatar, interest } = req.body
+    const { email, userPwd, username, avatar, interests } = req.body
 
     const address = {
         city: req.body.city,
@@ -25,7 +24,7 @@ router.post('/auth/signup', (req, res, next) => {
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(userPwd, salt))
-        .then(hashedPassword => User.create({ email, username, avatar, interest, password: hashedPassword, address }))
+        .then(hashedPassword => User.create({ email, username, avatar, interests, password: hashedPassword, address }))
         .then(createdUser => res.redirect('/auth/login'))
         .catch(error => next(error))
 })

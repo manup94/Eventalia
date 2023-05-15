@@ -16,7 +16,7 @@ Theres are the endpoints that we are going to use in our proyect:
 | METHOD | PATH | Description | JSON |
 | ---    | ---  | -----       | ---  |
 | GET    | `/`    | Index |     |      |
-| GET    | `/user/profile`    | Profile |     |      |
+| GET    | `/user/:_id`    | Profile |     |      |
 | GET    | `/auth/signup` | Sign up | |
 | POST   | `/auth/signup` | Sign up | |
 | GET    | `/auth/login` | Log in | |

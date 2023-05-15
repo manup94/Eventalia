@@ -1,23 +1,30 @@
+<<<<<<< HEAD
 <div class="container mt-5">
+=======
+<br>
+<div class="container">
+>>>>>>> dab59bfca10c624d17946e02e4a06a9314e91530
     <br>
     <h1>User Profile </h1>
     <hr>
     <div class="row">
         <div class="col-md-4">
-            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" style="width: 60%" alt="#">
+            <img src="{{avatar}}" style="width: 60%" alt="#">
         </div>
         <div class="col">
             <h3>Información:</h3>
             <ul>
-                <li> <strong>Username:</strong>{{username}} pepito1234</li>
+                <li> <strong>Username:</strong> {{username}} </li>
                 <br>
-                <li><strong>Email:</strong>{{email}} pepito@correo.com</li>
+                <li><strong>Email:</strong> {{email}}</li>
                 <br>
-                <li><strong>Address:</strong>{{address}} Calle Falsa 1234</li>
+                <li><strong>city:</strong> {{address.city}}</li>
                 <br>
-                <li><strong>Interests:</strong>{{interests}} Music</li>
+                <li><strong>zipcode:</strong> {{address.zipcode}}</li>
                 <br>
-                <li><strong>Role:</strong>{{role}} User</li>
+                <li><strong>Interests:</strong> {{interests}}</li>
+                <br>
+                <li><strong>Role:</strong> {{role}}</li>
             </ul>
         </div>
         <hr>
@@ -34,6 +41,6 @@
         <a href="/event/:_id/edit" class="btn btn-warning mt-3 mb-5">Edit</a>
     </div>
     <div class="btn">
-        <a href="/event/:_id/deletet" class="btn btn-danger mt-3 mb-5">Delete</a>
+        <a href="/event/:_id/delete" class="btn btn-danger mt-3 mb-5">Delete</a>
     </div>
 </div>
