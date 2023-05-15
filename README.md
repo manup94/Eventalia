@@ -17,6 +17,7 @@ Theres are the endpoints that we are going to use in our proyect:
 | ---    | ---  | -----       | ---  |
 | GET    | `/`    | Index |     |      |
 | GET    | `/user/:_id`    | Profile |     |      |
+| GET    | `/user/:_id/edit`|Profile edit| | |
 | GET    | `/auth/signup` | Sign up | |
 | POST   | `/auth/signup` | Sign up | |
 | GET    | `/auth/login` | Log in | |
