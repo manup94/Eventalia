@@ -14,13 +14,13 @@
 <body>
    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
-         <a class="navbar-brand" href="/">Project2</a>
+         <a class="navbar-brand" href="/"> <strong>Project2</strong></a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav mb-lg-0">
                <li class="nav-item">
                   <a class="nav-link" href="/">Home</a>
                </li>
@@ -30,27 +30,30 @@
                <li class="nav-item">
                   <a class="nav-link" href="/event/event-create">Create Event</a>
                </li>
-               <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                  <ul class="navbar-nav">
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                           <img
-                              src="https://ggsc.s3.amazonaws.com/images/uploads/The_Science-Backed_Benefits_of_Being_a_Dog_Owner.jpg"
-                              alt="#" class="logo-img">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                           <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
-                           <li><a class="dropdown-item" href="/auth/signup">Sign Up</a></li>
-                           <li><a class="dropdown-item" href="/auth/login">Log In</a></li>
-                           <form action="/auth/logout" method="POST">
-                              <button class="nav-link">Logout</button>
-                           </form>
-                        </ul>
-                     </li>
-                  </ul>
-               </div>
+               <li class="nav-item">
+                  <a class="nav-link" href="/auth/signup">Sign Up</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/auth/login">Log In</a>
+               </li>
             </ul>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+               <ul class="navbar-nav ms-auto">
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://i.pinimg.com/originals/f8/1b/a6/f81ba6a46659f461955e27a8959ced46.jpg" alt="#"
+                           class="logo-img">
+                     </a>
+                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
+                        <form action="/auth/logout" method="POST">
+                           <button class="nav-link">Logout</button>
+                        </form>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
          </div>
       </div>
    </nav>
