@@ -9,14 +9,19 @@ const saltRounds = 10
 //signup//
 //render
 router.get('/auth/signup', (req, res, next) => res.render('auth/signup'))
+
 //handler
 router.post('/auth/signup', (req, res, next) => {
 
+    console.log('estoy en post /auth/signup')
+
     const { email, userPwd, username, avatar, interest } = req.body
+
     const address = {
         city: req.body.city,
         zipcode: req.body.zipcode
     }
+
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(userPwd, salt))
@@ -29,6 +34,7 @@ router.post('/auth/signup', (req, res, next) => {
 //render
 router.get('/auth/login', (req, res, next) => res.render('auth/login'))
 //handler
+
 router.post('/auth/login', (req, res, next) => {
 
     const { email, userPwd } = req.body
