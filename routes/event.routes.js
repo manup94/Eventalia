@@ -4,18 +4,20 @@ const Event = require('../models/event.model.js');
 
 // Event list
 
-router.get('/event', (req, res, next) => {
+router.get('/event/list', (req, res, next) => {
     res.render('event/event')
 })
 
-// Create Event//
+// Create Event
 
-router.get('/event-create', (req, res, next) => {
+router.get('/event/event-create', (req, res, next) => {
     res.render('event/event-create')
 })
 
 
-
-
+//Perfil
+router.get('/user/profile', (req, res, next) => {
+    res.render('user/profile')
+})
 
 module.exports = router;
