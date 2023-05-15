@@ -22,6 +22,7 @@ require("./config")(app);
 require('./config/session.config')(app)
 
 // default value for title local
+const formatedDate = require("./utils/formatedDate");
 const capitalize = require("./utils/capitalize");
 const projectName = "Proyecto-2";
 

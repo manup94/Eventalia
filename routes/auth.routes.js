@@ -21,7 +21,7 @@ router.post('/auth/signup', (req, res, next) => {
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(userPwd, salt))
         .then(hashedPassword => User.create({ email, username, avatar, interest, password: hashedPassword, address }))
-        .then(createdUser => res.redirect('/login'))
+        .then(createdUser => res.redirect('/auth/login'))
         .catch(error => next(error))
 })
 
@@ -52,7 +52,7 @@ router.post('/auth/login', (req, res, next) => {
 
 //Logout
 router.post('/auth/logout', (req, res, next) => {
-    req.session.destroy(() => res.redirect('/index'))
+    req.session.destroy(() => res.redirect('/'))
 })
 
 

@@ -40,10 +40,11 @@
                               alt="#" class="logo-img">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                           <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
                            <li><a class="dropdown-item" href="/auth/signup">Sign Up</a></li>
                            <li><a class="dropdown-item" href="/auth/login">Log In</a></li>
-                           <li><a class="dropdown-item" href="/auth/logout">Log out</a></li>
+                           <form action="/auth/logout" method="POST">
+                              <button class="nav-link">Logout</button>
+                           </form>
                         </ul>
                      </li>
                   </ul>
