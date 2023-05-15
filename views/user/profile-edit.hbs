@@ -1,0 +1,43 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <br>
+            <h1>Edit User</h1>
+            <hr>
+            <form action="/user/:_id/edit" method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">User Name:</label>
+                    <input type="text" class="form-control" id="username" name="username" value={{username}}>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label"> Email:</label>
+                    <input type="text" class="form-control" id="email" name="email" value={{email}}>
+                </div>
+                <div class="mb-3">
+                    <label for="city" class="form-label">City:</label>
+                    <input type="text" class="form-control" id="city" name="city" value={{address.city}}>
+                </div>
+                <div class="mb-3">
+                    <label for="zipcode" class="form-label">Zipcode:</label>
+                    <input type="text" class="form-control" id="zipcode" name="zipcode" value={{address.zipcode}}>
+                </div>
+                <div class="mb-3">
+                    <label for="interests" class="form-label">Interest:</label>
+                    <input type="text" class="form-control" id="interests" name="interests" value={{interests}}>
+                </div>
+                <div class="mb-3">
+                    <label for="avatar" class="form-label">Avatar:</label>
+                    <input type="text" class="form-control" id="avatar" name="avatar" value={{avatar}}>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">Submit</button>
+                </div>
+                {{#if errorMessage}}
+                <div id="errorMessage">
+                    <p>{{errorMessage}}</p>
+                </div>
+                {{/if}}
+            </form>
+        </div>
+    </div>
+</div>
