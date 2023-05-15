@@ -8,9 +8,9 @@ const saltRounds = 10
 
 //signup//
 //render
-router.get('/signup', (req, res, next) => res.render('auth/signup'))
+router.get('/auth/signup', (req, res, next) => res.render('auth/signup'))
 //handler
-router.post('/signup', (req, res, next) => {
+router.post('/auth/signup', (req, res, next) => {
 
     const { email, userPwd, username, avatar, interest } = req.body
     const address = {
@@ -21,15 +21,15 @@ router.post('/signup', (req, res, next) => {
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(userPwd, salt))
         .then(hashedPassword => User.create({ email, username, avatar, interest, password: hashedPassword, address }))
-        .then(createdUser => res.redirect('/login'))
+        .then(createdUser => res.redirect('/auth/login'))
         .catch(error => next(error))
 })
 
 //Login//
 //render
-router.get('/login', (req, res, next) => res.render('auth/login'))
+router.get('/auth/login', (req, res, next) => res.render('auth/login'))
 //handler
-router.post('/login', (req, res, next) => {
+router.post('/auth/login', (req, res, next) => {
 
     const { email, userPwd } = req.body
 
@@ -51,8 +51,8 @@ router.post('/login', (req, res, next) => {
 })
 
 //Logout
-router.post('/logout', (req, res, next) => {
-    req.session.destroy(() => res.redirect('/index'))
+router.post('/auth/logout', (req, res, next) => {
+    req.session.destroy(() => res.redirect('/'))
 })
 
 

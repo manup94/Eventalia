@@ -5,13 +5,11 @@
     <h1>EVENT LIST</h1>
     <hr>
     <div class="row">
-        {{#each '###############################'}}
+        {{#each event}}
         <div class="col-md-4">
-            <article class="cards">
-                <img src="INSERTAR IMAGEN">
-            </article>
-            <p><b>{{name}}</b></p>
-            <p>{{location}}</p>
+            <h3>{{title}}</h3>
+            <p>{{start}}--- {{end}}</p>
+
         </div>
         {{/each}}
     </div>

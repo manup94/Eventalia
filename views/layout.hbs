@@ -25,10 +25,10 @@
                   <a class="nav-link" href="/">Home</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/event">Events</a>
+                  <a class="nav-link" href="/event/list">Events</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="/event-create">Create Event</a>
+                  <a class="nav-link" href="/event/create">Create Event</a>
                </li>
                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                   <ul class="navbar-nav">
@@ -40,9 +40,11 @@
                               alt="#" class="logo-img">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                           <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
-                           <li><a class="dropdown-item" href="/login">Log In</a></li>
-                           <li><a class="dropdown-item" href="#">Log out</a></li>
+                           <li><a class="dropdown-item" href="/auth/signup">Sign Up</a></li>
+                           <li><a class="dropdown-item" href="/auth/login">Log In</a></li>
+                           <form action="/auth/logout" method="POST">
+                              <button class="nav-link">Logout</button>
+                           </form>
                         </ul>
                      </li>
                   </ul>
