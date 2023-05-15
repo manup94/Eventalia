@@ -14,19 +14,19 @@ You can only book those events if you are logged in. Only the 'admin' can make n
 Theres are the endpoints that we are going to use in our proyect:
 
 | METHOD | PATH | Description | JSON |
-| --- | --- |
-| GET | / | Index | |
-| GET | /auth/signup | Sign up | |
-| POST | /auth/signup | Sign up | |
-| GET | /auth/login | Log in | |
-| POST | /auth/login | Log in | |
-| GET | /auth/logout | Log out | |
-| GET | /event/list | Event list | |
-| GET | /event/create | New event render | |
-| POST | /event/create |New event handler | |
-| GET | /event/:_id | Event details | |
-| GET | /event/:_id/edit |Edit event render | |
-| POST | /event/:_id/edit |Edit event handler | |
-| POST | /event/:_id/delete |Delete event | |
-| GET | /api/event | Event list | X |
-| POST | /api/event/:-id |Event details | X |
+| ---    | ---  | -----       | ---  |
+| GET    | /    | Index |     |      |
+| GET    | /auth/signup | Sign up | |
+| POST   | /auth/signup | Sign up | |
+| GET    | /auth/login | Log in | |
+| POST   | /auth/login | Log in | |
+| GET    | /auth/logout | Log out | |
+| GET    | /event/list | Event list | |
+| GET    | /event/create | New event render | |
+| POST   | /event/create |New event handler | |
+| GET    | /event/:_id | Event details | |
+| GET    | /event/:_id/edit |Edit event render | |
+| POST   | /event/:_id/edit |Edit event handler | |
+| POST   | /event/:_id/delete |Delete event | |
+| GET    | /api/event | Event list | X |
+| POST   | /api/event/:-id |Event details | X |
