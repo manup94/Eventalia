@@ -28,7 +28,7 @@ router.get('/event/list', (req, res, next) => {
 
 // Create Event//
 // render
-router.get('/event/create', isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
+router.get('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
     res.render('event/event-create')
 })
 //handler
