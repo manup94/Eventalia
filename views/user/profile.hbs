@@ -33,9 +33,10 @@
         <a href="/" class="btn btn-primary mt-3 mb-5">Home</a>
     </div>
     <div class="btn">
-        <a href="/event/:_id/edit" class="btn btn-warning mt-3 mb-5">Edit</a>
+        <a href="/user/{{_id}}/edit" class="btn btn-sm btn-info">editar</a>
     </div>
-    <div class="btn">
-        <a href="/event/:_id/delete" class="btn btn-danger mt-3 mb-5">Delete</a>
-    </div>
+
+    <form action="/user/{{_id}}/delete" method="POST" style="display: inline">
+        <input type="submit" value="eliminar" class="btn btn-sm btn-danger">
+    </form>
 </div>

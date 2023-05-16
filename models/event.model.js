@@ -28,7 +28,11 @@ const eventSchema = new Schema(
             type: {
                 type: String
             },
-            coordinates: [Number]
+            coordinates: [Number],
+            city: {
+                type: String
+            }
+
         },
         eventImg: {
             type: String

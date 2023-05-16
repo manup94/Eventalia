@@ -1,23 +1,47 @@
 <div class="container mt-5">
     <br>
-    <h1>Event Detail</h1>
-    <h2>{{title}}</h2>
-    <div class="cards">
-        {{eventImg}}
+    <h1>{{title}} </h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{eventImg}}" style="width: 60%" alt="#">
+        </div>
+        <div class="col">
+            <h3>Info:</h3>
+            <ul>
+                <br>
+                <li><strong>Category:</strong> {{category}}</li>
+                <br>
+                <li><strong>Description:</strong> {{description}}</li>
+                <br>
+                <li><strong>Start:</strong> {{start}}</li>
+                <br>
+                <li><strong>End:</strong> {{end}}</li>
+                <br>
+            </ul>
+        </div>
+        <hr>
+        <div class="col">
+            <h3>Assistants</h3>
+            <ul>
+                <li>
+                    {{assistants}}
+                </li>
+            </ul>
+
+        </div>
+        <div class="col-md-4">
+            <h3>Eventos Guardados</h3>
+            <hr>
+            <p>Próximamente aparecerán los eventos guardados</p>
+        </div>
     </div>
-    <p>{{location}}
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquam massa orci, sit amet scelerisque velit
-        imperdiet
-        tristique. Suspendisse vel urna vitae ipsum pretium vulputate. Aliquam viverra volutpat nunc ac luctus. Vivamus
-        at mi
-        vitae erat porttitor consectetur. Fusce mollis interdum dolor, eu feugiat velit tempus eu. Nullam elit velit,
-        feugiat
-        non libero at, gravida placerat neque. Duis vel ipsum quis magna eleifend dictum tincidunt nec quam. Mauris
-        egestas odio
-        leo, rutrum sodales tortor fringilla accumsan. Sed facilisis purus vitae sem consequat, eu bibendum metus
-        rutrum.</p>
-    <br>
-    <a href="/event/:_id/delete" class="btn btn-danger">Delete</a>
-    <a href="/event/:_id/edit" class="btn btn-warning">Edit</a>
-    {{/if}}
+    <div class="btn">
+        <a href="/" class="btn btn-primary mt-3 mb-5">Home</a>
+    </div>
+    <a href="/event/{{_id}}/edit" class="btn btn-sm btn-info">editar</a>
+
+    <form action="/event/{{_id}}/delete" method="POST" style="display: inline">
+        <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+    </form>
 </div>

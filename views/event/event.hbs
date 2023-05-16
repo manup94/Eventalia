@@ -5,14 +5,13 @@
     <div class="row">
         {{#each event}}
         <div class="col-md-4">
-            <h3>{{title}}</h3>
-            <p>{{start}}--- {{end}}</p>
+            <h3><a class="text-decoration-none text-black" href="/event/{{_id}}">{{title}}</a></h3>
+            <p>Start: {{start}}</p>
+            <p>End: {{end}}</p>
 
             <article class="cards">
                 {{eventImg}}
             </article>
-            <p><b>{{title}}</b></p>
-            <p>{{location}}</p>
         </div>
         {{/each}}
     </div>
