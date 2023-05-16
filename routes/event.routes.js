@@ -2,7 +2,8 @@ const express = require('express');
 const router = require("express").Router()
 const Event = require("../models/Event.model")
 
-const { isLoggedIn, checkRoles } = require('../middlewares/route-guard')
+const { isLoggedIn, checkRoles } = require('../middlewares/route-guard');
+const eventApiHandler = require('../services/event-api.services');
 
 // event list
 router.get('/event/list', isLoggedIn, (req, res, next) => {
@@ -12,10 +13,21 @@ router.get('/event/list', isLoggedIn, (req, res, next) => {
         isAdmin: req.session.currentUser?.role === 'ADMIN'
     }
 
-    Event
-        .find()
-        .then(allEvents => res.render('event/event', { event: allEvents }))
-        .catch(err => console.log(err))
+    const promises = [
+        Event.find(),
+        eventApiHandler.getEvents()
+    ]
+
+    Promise
+        .all(promises)
+        .then(promiseResults => {
+
+            const internalEvents = promiseResults[0]
+            const extrernalEvents = promiseResults[1].data.results
+
+            res.render('event/event-list', { internalEvents, extrernalEvents })
+        })
+        .catch(err => next(err))
 })
 
 
@@ -39,13 +51,32 @@ router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, n
 })
 
 // Details
-router.get('/event/:_id', isLoggedIn, (req, res, next) => {
-    const id = req.params._id
-    Event.findById(id)
-        .then(event => res.render('event/event-detail', event))
-        .catch(err => console.log(err))
-})
+// router.get('/event/:_id', isLoggedIn, (req, res, next) => {
+//     const id = req.params._id
+//     Event.findById(id)
+//         .then(event => res.render('event/event-detail', event))
+//         .catch(err => console.log(err))
+// })
 
+
+router.get('/event/:_id', isLoggedIn, (req, res, next) => {
+    const promises = [
+        Event.findById(_id),
+        eventApiHandler.getOneEvent(_id)
+    ]
+
+    Promise
+        .all(promises)
+        .then(promiseResults => {
+
+            const internalEvents = promiseResults[0]
+            const extrernalEvents = promiseResults[1].data.results
+
+            res.render('event/event-detail', { internalEvents, extrernalEvents })
+        })
+        .catch(err => next(err))
+
+})
 // Update
 router.get('/event/:_id/edit', (req, res, next) => {
 

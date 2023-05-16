@@ -3,7 +3,8 @@
     <h1>Event List</h1>
     <hr>
     <div class="row">
-        {{#each event}}
+        <h2>Our Events</h2>
+        {{#each internalEvents}}
         <div class="col-md-4">
             <h3><a class="text-decoration-none text-black" href="/event/{{_id}}">{{title}}</a></h3>
             <p>Start: {{start}}</p>
@@ -16,6 +17,21 @@
         {{/each}}
     </div>
     <br>
+    <div class="row">
+        <h2>Comunity Events</h2>
+        {{#each extrernalEvents}}
+        <div class="col-md-4">
+            <h3><a class="text-decoration-none text-black" href="/event/{{_id}}">{{title}}</a></h3>
+            <p>{{title}}</p>
+            <p>Start: {{start}}</p>
+            <p>End: {{end}}</p>
+
+            <article class="cards">
+                {{eventImg}}
+            </article>
+        </div>
+        {{/each}}
+    </div>
     <div class="btn">
         <a href="/" class="btn btn-dark mt-3 mb-5">Home</a>
     </div>
