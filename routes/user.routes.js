@@ -5,8 +5,7 @@ const User = require("../models/User.model");
 const { isLoggedIn } = require('../middlewares/route-guard');
 
 
-//Perfil
-
+//Profile
 router.get('/user/:_id', isLoggedIn, (req, res) => {
     const id = req.session.currentUser._id
     User.findById(id)
@@ -14,8 +13,8 @@ router.get('/user/:_id', isLoggedIn, (req, res) => {
         .catch(err => console.log(err))
 })
 
-//Update
 
+//Update
 router.get('/user/:_id/edit', (req, res, next) => {
 
     const id = req.session.currentUser._id
@@ -24,7 +23,6 @@ router.get('/user/:_id/edit', (req, res, next) => {
         .then(user => res.render("user/profile-edit", user))
         .catch(err => console.log(err))
 });
-
 
 router.post('/user/:_id/edit', (req, res, next) => {
 
@@ -43,7 +41,6 @@ router.post('/user/:_id/edit', (req, res, next) => {
 
 
 //Delete
-
 router.post('/user/:_id/delete', (req, res, next) => {
 
     const id = req.session.currentUser._id
@@ -53,8 +50,6 @@ router.post('/user/:_id/delete', (req, res, next) => {
         .then(() => res.redirect('/'))
         .catch(err => console.log(err))
 });
-
-
 
 
 

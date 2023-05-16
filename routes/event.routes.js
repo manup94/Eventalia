@@ -68,7 +68,6 @@ router.post('/event/:_id/edit', (req, res, next) => {
 });
 
 //Delete
-
 router.post('/event/:_id/delete', (req, res, next) => {
 
     const id = req.params._id

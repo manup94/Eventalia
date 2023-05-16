@@ -14,7 +14,7 @@
 <body>
    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
-         <a class="navbar-brand" href="/"> <strong>Project2</strong></a>
+         <a class="navbar-brand" href="/"> <strong>{{appTitle}}</strong></a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -43,9 +43,9 @@
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         {{#if avatar}}
-                        <img src="{{avatar}}" style="width: 60%" alt="#" class="logo-img">
+                        <img src="{{avatar}}" style="width: 60%" alt="avatar" class="logo-img">
                         {{else}}
-                        <img src="https://i.stack.imgur.com/l60Hf.png" style="width: 50%" alt="#" class="logo-img">
+                        <img src="https://i.stack.imgur.com/l60Hf.png" style="width: 50%" alt="default-avatar" class="logo-img">
                         {{/if}}
                      </a>
                      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">

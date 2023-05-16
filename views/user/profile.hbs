@@ -29,14 +29,15 @@
             <p>Próximamente aparecerán los eventos guardados</p>
         </div>
     </div>
-    <div class="btn">
-        <a href="/" class="btn btn-primary mt-3 mb-5">Home</a>
+    <div class="btns">
+        <div class="btn">
+            <a href="/" class="btn btn-primary mt-3 mb-5">Home</a>
+        </div>
+        <div class="btn">
+            <a href="/user/{{_id}}/edit" class="btn btn-sm btn-info">editar</a>
+        </div>
+        <form action="/user/{{_id}}/delete" method="POST" style="display: inline">
+            <input type="submit" value="eliminar" class="btn btn-sm btn-danger">
+        </form>
     </div>
-    <div class="btn">
-        <a href="/user/{{_id}}/edit" class="btn btn-sm btn-info">editar</a>
-    </div>
-
-    <form action="/user/{{_id}}/delete" method="POST" style="display: inline">
-        <input type="submit" value="eliminar" class="btn btn-sm btn-danger">
-    </form>
 </div>
