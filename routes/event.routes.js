@@ -51,11 +51,40 @@ router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, n
 })
 
 // Details
+<<<<<<< HEAD
 router.get('/event/:_id', isLoggedIn, (req, res, next) => {
     const id = req.params._id
     Event.findById(id)
         .then(event => res.render('event/event-detail', event))
         .catch(err => console.log(err))
+=======
+
+router.get('/event/:_id', isLoggedIn, (req, res, next) => {
+
+    const { _id } = req.params
+    const promises = [
+        Event.findById(_id),
+        eventApiHandler.getOneEvent(_id)
+    ]
+
+    Promise
+        .all(promises)
+        .then(promiseResults => {
+
+            const internalEvents = promiseResults[0]
+            const externalEvents = promiseResults[1].data.results
+
+
+            if (internalEvents) {
+                res.render('event/event-detail', externalEvents)
+            }
+            else {
+                res.render('event/event-detail', internalEvents)
+            }
+        })
+        .catch(err => next(err))
+
+>>>>>>> 4246e107623ab0a026cf6d76a424068944851c1b
 })
 
 
@@ -99,7 +128,7 @@ router.post('/event/:_id/edit', (req, res, next) => {
 });
 
 //Delete
-router.post('/event/:_id/delete', (req, res, next) => {
+router.post('/event-list/:_id/delete', (req, res, next) => {
 
     const id = req.params._id
 
