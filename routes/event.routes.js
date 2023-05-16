@@ -56,8 +56,6 @@ router.get('/event/:_id', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.params
 
-    // res.send(_id)
-
     const promises = [
         Event.findById(_id),
         eventApiHandler.getOneEvent(_id)
@@ -70,7 +68,10 @@ router.get('/event/:_id', isLoggedIn, (req, res, next) => {
             const internalEvent = promiseResults[0]
             const extrernalEvent = promiseResults[1].data.results
 
-            res.render('event/event-detail', { internalEvent, extrernalEvent })
+            console.log(internalEvent, extrernalEvent)
+
+            if (!extrernalEvent.length) res.render('event/event-detail', { internalEvent })
+            else res.render('event/event-detail', { extrernalEvent })
         })
         .catch(err => next(err))
 

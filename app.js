@@ -9,10 +9,6 @@ const session = require("express-session");
 require("./config")(app);
 require('./config/session.config')(app)
 
-const capitalize = require("./utils/capitalize");
-const projectName = "Proyecto-2";
-
-app.locals.appTitle = `${capitalize(projectName)}`;
 
 app.use((req, res, next) => {
 
@@ -23,7 +19,7 @@ app.use((req, res, next) => {
         res.locals.hideSignUp = true;
     }
 
-    
+
     next();
 });
 
