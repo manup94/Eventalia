@@ -51,15 +51,10 @@ router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, n
 })
 
 // Details
-// router.get('/event/:_id', isLoggedIn, (req, res, next) => {
-//     const id = req.params._id
-//     Event.findById(id)
-//         .then(event => res.render('event/event-detail', event))
-//         .catch(err => console.log(err))
-// })
-
 
 router.get('/event/:_id', isLoggedIn, (req, res, next) => {
+
+    const { _id } = req.params
     const promises = [
         Event.findById(_id),
         eventApiHandler.getOneEvent(_id)
@@ -70,9 +65,15 @@ router.get('/event/:_id', isLoggedIn, (req, res, next) => {
         .then(promiseResults => {
 
             const internalEvents = promiseResults[0]
-            const extrernalEvents = promiseResults[1].data.results
+            const externalEvents = promiseResults[1].data.results
 
-            res.render('event/event-detail', { internalEvents, extrernalEvents })
+
+            if (internalEvents) {
+                res.render('event/event-detail', externalEvents)
+            }
+            else {
+                res.render('event/event-detail', internalEvents)
+            }
         })
         .catch(err => next(err))
 
@@ -99,7 +100,7 @@ router.post('/event/:_id/edit', (req, res, next) => {
 });
 
 //Delete
-router.post('/event/:_id/delete', (req, res, next) => {
+router.post('/event-list/:_id/delete', (req, res, next) => {
 
     const id = req.params._id
 

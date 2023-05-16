@@ -8,15 +8,12 @@ const app = express();
 require("./config")(app);
 require('./config/session.config')(app)
 
-const capitalize = require("./utils/capitalize");
-const projectName = "Proyecto-2";
-
-app.locals.appTitle = `${capitalize(projectName)}`;
-
 app.use((req, res, next) => {
 
-    console.log('soy un middleware de bloque y hago lo que digas en cada peticion')
-    next()
+    if (req.session.currentUser) {
+        next()
+    }
+
 })
 
 // Start handling routes
@@ -30,6 +27,7 @@ const eventRoutes = require("./routes/event.routes");
 app.use("/", eventRoutes);
 
 const userRoutes = require("./routes/user.routes");
+const session = require("express-session");
 app.use("/", userRoutes);
 
 

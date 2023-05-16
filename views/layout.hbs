@@ -12,6 +12,7 @@
 </head>
 
 <body>
+   {{#if isLoggedIn}}
    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
          <a class="navbar-brand" href="/"> <strong>{{appTitle}}</strong></a>
@@ -45,7 +46,8 @@
                         {{#if avatar}}
                         <img src="{{avatar}}" style="width: 60%" alt="avatar" class="logo-img">
                         {{else}}
-                        <img src="https://i.stack.imgur.com/l60Hf.png" style="width: 50%" alt="default-avatar" class="logo-img">
+                        <img src="https://i.stack.imgur.com/l60Hf.png" style="width: 50%" alt="default-avatar"
+                           class="logo-img">
                         {{/if}}
                      </a>
                      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -60,6 +62,57 @@
          </div>
       </div>
    </nav>
+   {{else}}
+   <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+      <div class="container-fluid">
+         <a class="navbar-brand" href="/"> <strong>{{appTitle}}</strong></a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-lg-0">
+               <li class="nav-item">
+                  <a class="nav-link" href="/">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/event/list">Events</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/event/event-create">Create Event</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/auth/signup">Sign Up</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" href="/auth/login">Log in</a>
+               </li>
+            </ul>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+               <ul class="navbar-nav ms-auto">
+                  <li class="nav-item dropdown">
+                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        {{#if avatar}}
+                        <img src="{{avatar}}" style="width: 60%" alt="avatar" class="logo-img">
+                        {{else}}
+                        <img src="https://i.stack.imgur.com/l60Hf.png" style="width: 50%" alt="default-avatar"
+                           class="logo-img">
+                        {{/if}}
+                     </a>
+                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
+                        <form action="/auth/logout" method="POST">
+                           <button class="nav-link">Logout</button>
+                        </form>
+                     </ul>
+                  </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </nav>
+   {{/if}}
 
    {{{body}}}
 
