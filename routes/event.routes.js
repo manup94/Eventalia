@@ -51,13 +51,6 @@ router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, n
 })
 
 // Details
-<<<<<<< HEAD
-router.get('/event/:_id', isLoggedIn, (req, res, next) => {
-    const id = req.params._id
-    Event.findById(id)
-        .then(event => res.render('event/event-detail', event))
-        .catch(err => console.log(err))
-=======
 
 router.get('/event/:_id', isLoggedIn, (req, res, next) => {
 
@@ -84,7 +77,6 @@ router.get('/event/:_id', isLoggedIn, (req, res, next) => {
         })
         .catch(err => next(err))
 
->>>>>>> 4246e107623ab0a026cf6d76a424068944851c1b
 })
 
 

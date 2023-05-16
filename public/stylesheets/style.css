@@ -1,7 +1,9 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url(https://wallpapercave.com/wp/wp1889538.jpg);
+  background-image: url(https://www.hostelworld.com/blog/wp-content/uploads/2017/04/field-day-london.jpg);
   background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .logo-img {
@@ -11,7 +13,8 @@ body {
 }
 
 .container {
-  background-color: azure;
+  background-color: rgba(255, 255, 255, 0.677);
+  color: black;
 }
 
 .dropdown {

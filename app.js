@@ -12,15 +12,17 @@ const capitalize = require("./utils/capitalize");
 const projectName = "Proyecto-2";
 
 app.locals.appTitle = `${capitalize(projectName)}`;
+
 app.use((req, res, next) => {
+
     const loggedUser = req.session.currentUser;
+
     if (loggedUser) {
         res.locals.hideLogin = true;
-        res.locals.hideRegister = true;
-    } else {
-        res.locals.hideProfile = true;
-        res.locals.hideLogout = true;
+        res.locals.hideSignUp = true;
     }
+
+    
     next();
 });
 

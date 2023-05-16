@@ -86,13 +86,19 @@
                <li class="nav-item">
                   <a class="nav-link" href="/event/event-create">Create Event</a>
                </li>
+               {{#unless hideSignUp}}
                <li class="nav-item">
                   <a class="nav-link" href="/auth/signup">Sign Up</a>
                </li>
+               {{/unless}}
+               {{#unless hideLogin}}
                <li class="nav-item">
                   <a class="nav-link" href="/auth/login">Log in</a>
                </li>
+               {{/unless}}
+
             </ul>
+            {{#unless hideRegister}}
             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                <ul class="navbar-nav ms-auto">
                   <li class="nav-item dropdown">
@@ -101,8 +107,9 @@
                         {{#if avatar}}
                         <img src="{{avatar}}" style="width: 60%" alt="avatar" class="logo-img">
                         {{else}}
-                        <img src="https://i.stack.imgur.com/l60Hf.png" style="width: 50%" alt="default-avatar"
-                           class="logo-img">
+                        <img
+                           src="https://img.uxwing.com/wp-content/themes/uxwing/download/checkmark-cross/cross-icon.png"
+                           style="width: 50%" alt="default-avatar" class="logo-img">
                         {{/if}}
                      </a>
                      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
@@ -114,6 +121,7 @@
                   </li>
                </ul>
             </div>
+            {{/unless}}
          </div>
       </div>
    </nav>
@@ -125,7 +133,6 @@
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"></script>
    <script src="/js/script.js"></script>
-   <script src="./js/mapStyles.js"></script>
    <script src="./js/app.js"></script>
    <script
       src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyAEBM2B2NHtdK48DV0aU3fMySjjpoHRu3I"></script>
