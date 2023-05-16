@@ -29,7 +29,7 @@ router.get('/user/:_id/edit', (req, res, next) => {
 router.post('/user/:_id/edit', (req, res, next) => {
 
     const { username, email, interests } = req.body
-    const id = req.session.currentUser._id
+    const { id } = req.session.currentUser._id
     const address = {
         city: req.body.city,
         zipcode: req.body.zipcode
