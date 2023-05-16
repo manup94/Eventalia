@@ -3,7 +3,7 @@ const isLoggedIn = (req, res, next) => {
 }
 
 const isLoggedOut = (req, res, next) => {
-    !req.session.currentUser ? next() : res.redirect('/event/event')
+    !req.session.currentUser ? next() : res.redirect('/event/event-list')
 }
 
 const checkRoles = (...admittedRoles) => (req, res, next) => {

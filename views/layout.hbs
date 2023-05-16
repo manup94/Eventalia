@@ -28,9 +28,11 @@
                <li class="nav-item">
                   <a class="nav-link" href="/event/list">Events</a>
                </li>
+               {{#if userRole.is}}
                <li class="nav-item">
                   <a class="nav-link" href="/event/event-create">Create Event</a>
                </li>
+               {{/if}}
                {{#unless hideLogin}}
                <li class="nav-item">
                   <a class="nav-link" href="/auth/signup">Sign Up</a>
@@ -50,14 +52,9 @@
                         {{#if avatar}}
                         <img src="{{avatar}}" style="width: 60%" alt="avatar" class="logo-img">
                         {{else}}
-<<<<<<< HEAD
                         <img
                            src="https://img.uxwing.com/wp-content/themes/uxwing/download/checkmark-cross/cross-icon.png"
                            style="width: 50%" alt="default-avatar" class="logo-img">
-=======
-                        <img src="https://i.stack.imgur.com/l60Hf.png" style="width: 50%" alt="default-avatar"
-                           class="logo-img">
->>>>>>> 4246e107623ab0a026cf6d76a424068944851c1b
                         {{/if}}
                      </a>
                      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">

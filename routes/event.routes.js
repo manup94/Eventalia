@@ -51,17 +51,14 @@ router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, n
 })
 
 // Details
-<<<<<<< HEAD
-router.get('/event/:_id', isLoggedIn, (req, res, next) => {
-    const id = req.params._id
-    Event.findById(id)
-        .then(event => res.render('event/event-detail', event))
-        .catch(err => console.log(err))
-=======
+
 
 router.get('/event/:_id', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.params
+
+    // res.send(_id)
+
     const promises = [
         Event.findById(_id),
         eventApiHandler.getOneEvent(_id)
@@ -71,55 +68,30 @@ router.get('/event/:_id', isLoggedIn, (req, res, next) => {
         .all(promises)
         .then(promiseResults => {
 
-            const internalEvents = promiseResults[0]
-            const externalEvents = promiseResults[1].data.results
+            const internalEvent = promiseResults[0]
+            const extrernalEvent = promiseResults[1].data.results
 
-
-            if (internalEvents) {
-                res.render('event/event-detail', externalEvents)
-            }
-            else {
-                res.render('event/event-detail', internalEvents)
-            }
+            res.render('event/event-detail', { internalEvent, extrernalEvent })
         })
         .catch(err => next(err))
 
->>>>>>> 4246e107623ab0a026cf6d76a424068944851c1b
 })
-
-
-// router.get('/event/:_id', isLoggedIn, (req, res, next) => {
-//     const promises = [
-//         Event.findById(_id),
-//         eventApiHandler.getOneEvent(_id)
-//     ]
-
-//     Promise
-//         .all(promises)
-//         .then(promiseResults => {
-
-//             const internalEvents = promiseResults[0]
-//             const extrernalEvents = promiseResults[1].data.results
-
-//             res.render('event/event-detail', { internalEvents, extrernalEvents })
-//         })
-//         .catch(err => next(err))
-
-// })
 // Update
-router.get('/event/:_id/edit', (req, res, next) => {
+router.get('/event/:id/edit', (req, res, next) => {
 
-    const id = req.params._id
+    const { id } = req.params
+
     Event
         .findById(id)
         .then(event => res.render("event/event-edit", event))
         .catch(err => console.log(err))
 });
 
-router.post('/event/:_id/edit', (req, res, next) => {
+router.post('/event/:id/edit', (req, res, next) => {
     const { title, description, category, start, end, city, location, eventImg } = req.body
-    const id = req.params._id
+    const { id } = req.params
 
+    // res.send(id)
 
     Event
         .findByIdAndUpdate(id, { title, description, category, start, end, city, location, eventImg })
@@ -128,16 +100,16 @@ router.post('/event/:_id/edit', (req, res, next) => {
 });
 
 //Delete
-router.post('/event-list/:_id/delete', (req, res, next) => {
+router.post('/event/:id/delete', (req, res, next) => {
 
-    const id = req.params._id
+    const { id } = req.params
 
     Event
         .findByIdAndDelete(id)
-        .then(() => res.redirect('/'))
+        .then(() => res.redirect('/event/list'))
         .catch(err => console.log(err))
 });
 
 
 
-module.exports = router;
+module.exports = router

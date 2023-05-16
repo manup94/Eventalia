@@ -4,15 +4,11 @@ require("./db");
 const express = require("express");
 const hbs = require("hbs");
 const app = express();
+const session = require("express-session");
 
 require("./config")(app);
 require('./config/session.config')(app)
 
-<<<<<<< HEAD
-const capitalize = require("./utils/capitalize");
-const projectName = "Proyecto-2";
-
-app.locals.appTitle = `${capitalize(projectName)}`;
 app.use((req, res, next) => {
     const loggedUser = req.session.currentUser;
     if (loggedUser) {
@@ -24,15 +20,6 @@ app.use((req, res, next) => {
     }
     next();
 });
-=======
-app.use((req, res, next) => {
-
-    if (req.session.currentUser) {
-        next()
-    }
-
-})
->>>>>>> 4246e107623ab0a026cf6d76a424068944851c1b
 
 // Start handling routes
 const indexRoutes = require("./routes/index.routes");
@@ -45,8 +32,8 @@ const eventRoutes = require("./routes/event.routes");
 app.use("/", eventRoutes);
 
 const userRoutes = require("./routes/user.routes");
-const session = require("express-session");
 app.use("/", userRoutes);
+
 
 const mapRoutes = require("./routes/map.routes");
 app.use("/map", mapRoutes);

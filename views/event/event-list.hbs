@@ -11,7 +11,7 @@
             <p>End: {{end}}</p>
 
             <article class="cards">
-                {{eventImg}}
+                <img src="{{eventImg}}" alt="">
             </article>
         </div>
         {{/each}}
@@ -21,7 +21,7 @@
         <h2>Comunity Events</h2>
         {{#each extrernalEvents}}
         <div class="col-md-4">
-            <h3><a class="text-decoration-none text-black" href="/event/{{id}}">{{title}}</a></h3>
+            <h3><a class="text-decoration-none text-black" href="/event/{{_id}}">{{title}}</a></h3>
             <p>{{title}}</p>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
