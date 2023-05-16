@@ -74,8 +74,10 @@ router.get('/event/:_id', isLoggedIn, (req, res, next) => {
             else res.render('event/event-detail', { extrernalEvent })
         })
         .catch(err => next(err))
-
 })
+
+
+
 // Update
 router.get('/event/:id/edit', (req, res, next) => {
 
