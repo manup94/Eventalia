@@ -23,9 +23,6 @@ app.use((req, res, next) => {
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
 
-const apiRoutes = require("./routes/api.routes");
-app.use("/", apiRoutes);
-
 const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes);
 
