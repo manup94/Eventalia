@@ -1,18 +1,19 @@
-<div class="container mt-5">
+<div class="container list mt-5">
     <br>
     <h1>Event List</h1>
     <hr>
     <div class="row">
         <h2>Our Events</h2>
+        <hr>
         {{#each internalEvents}}
         <div class="col-md-4">
             <h3><a class="text-decoration-none text-black" href="/event/{{_id}}">{{title}}</a></h3>
+            <article class="cards">
+                <img src="{{eventImg}}" style="width: 50%"alt="">
+            </article>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
 
-            <article class="cards">
-                <img src="{{eventImg}}" alt="">
-            </article>
         </div>
         {{/each}}
     </div>
