@@ -6,8 +6,7 @@ const User = require("../models/User.model")
 const bcrypt = require('bcryptjs')
 const saltRounds = 10
 
-//signup//
-//render
+//signup render
 router.get('/auth/signup', (req, res, next) => res.render('auth/signup'))
 
 //handler
@@ -29,11 +28,10 @@ router.post('/auth/signup', (req, res, next) => {
         .catch(error => next(error))
 })
 
-//Login//
-//render
+//Login render
 router.get('/auth/login', (req, res, next) => res.render('auth/login'))
-//handler
 
+//handler
 router.post('/auth/login', (req, res, next) => {
 
     const { email, userPwd } = req.body
