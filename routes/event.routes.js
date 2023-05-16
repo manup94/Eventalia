@@ -51,32 +51,32 @@ router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, n
 })
 
 // Details
-// router.get('/event/:_id', isLoggedIn, (req, res, next) => {
-//     const id = req.params._id
-//     Event.findById(id)
-//         .then(event => res.render('event/event-detail', event))
-//         .catch(err => console.log(err))
-// })
-
-
 router.get('/event/:_id', isLoggedIn, (req, res, next) => {
-    const promises = [
-        Event.findById(_id),
-        eventApiHandler.getOneEvent(_id)
-    ]
-
-    Promise
-        .all(promises)
-        .then(promiseResults => {
-
-            const internalEvents = promiseResults[0]
-            const extrernalEvents = promiseResults[1].data.results
-
-            res.render('event/event-detail', { internalEvents, extrernalEvents })
-        })
-        .catch(err => next(err))
-
+    const id = req.params._id
+    Event.findById(id)
+        .then(event => res.render('event/event-detail', event))
+        .catch(err => console.log(err))
 })
+
+
+// router.get('/event/:_id', isLoggedIn, (req, res, next) => {
+//     const promises = [
+//         Event.findById(_id),
+//         eventApiHandler.getOneEvent(_id)
+//     ]
+
+//     Promise
+//         .all(promises)
+//         .then(promiseResults => {
+
+//             const internalEvents = promiseResults[0]
+//             const extrernalEvents = promiseResults[1].data.results
+
+//             res.render('event/event-detail', { internalEvents, extrernalEvents })
+//         })
+//         .catch(err => next(err))
+
+// })
 // Update
 router.get('/event/:_id/edit', (req, res, next) => {
 
