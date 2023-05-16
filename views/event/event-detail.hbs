@@ -1,24 +1,24 @@
 <div class="container mt-5">
     <br>
-    <h1>{{title}} </h1>
+    <h1>{{internalEvent.title}} </h1>
     <hr>
     <div class="row">
         <div class="col-md-4">
-            <img src="{{eventImg}}" style="width: 100%" alt="#">
+            <img src="{{internalEvent.eventImg}}" style="width: 100%" alt="#">
         </div>
         <div class="col">
             <h3>Info:</h3>
             <ul>
                 <br>
-                <li><strong>Category:</strong> {{category}}</li>
+                <li><strong>Category:</strong> {{internalEvent.category}}</li>
                 <br>
-                <li><strong>Description:</strong> {{description}}</li>
+                <li><strong>Description:</strong> {{internalEvent.description}}</li>
                 <br>
-                <li><strong>Start:</strong> {{start}}</li>
+                <li><strong>Start:</strong> {{internalEvent.start}}</li>
                 <br>
-                <li><strong>End:</strong> {{end}}</li>
+                <li><strong>End:</strong> {{internalEvent.end}}</li>
                 <br>
-                <li><strong>City:</strong> {{location.type}}</li>
+                <li><strong>City:</strong> {{internalEvent.location.type}}</li>
                 <br>
                 <li><strong>Assistants:</strong>
                     <br>
@@ -42,9 +42,9 @@
             <a href="/" class="btn btn-primary mt-3 mb-5">Home</a>
         </div>
         <div class="btn">
-            <a href="/event/{{_id}}/edit" class="btn btn-warning mt-3 mb-5">Edit</a>
+            <a href="/event/{{internalEvent.id}}/edit" class="btn btn-warning mt-3 mb-5">Edit</a>
         </div>
-        <form action="/event/{{_id}}/delete" method="POST" style="display: inline">
+        <form action="/event/{{internalEvent.id}}/delete" method="POST" style="display: inline">
             <input type="submit" value="Delete" class="btn btn-danger mt-3 mb-5">
         </form>
     </div>

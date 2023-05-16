@@ -4,6 +4,7 @@ require("./db");
 const express = require("express");
 const hbs = require("hbs");
 const app = express();
+const session = require("express-session");
 
 require("./config")(app);
 require('./config/session.config')(app)
@@ -37,8 +38,8 @@ const eventRoutes = require("./routes/event.routes");
 app.use("/", eventRoutes);
 
 const userRoutes = require("./routes/user.routes");
-const session = require("express-session");
 app.use("/", userRoutes);
+
 
 const mapRoutes = require("./routes/map.routes");
 app.use("/map", mapRoutes);
