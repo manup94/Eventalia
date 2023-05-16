@@ -85,9 +85,12 @@
                <li class="nav-item">
                   <a class="nav-link" href="/event/list">Events</a>
                </li>
+               {{#if isAdmin}}
                <li class="nav-item">
                   <a class="nav-link" href="/event/event-create">Create Event</a>
                </li>
+               {{/if}}
+
                {{#unless hideSignUp}}
                <li class="nav-item">
                   <a class="nav-link" href="/auth/signup">Sign Up</a>
@@ -100,14 +103,14 @@
                {{/unless}}
 
             </ul>
-            {{#unless hideRegister}}
             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                <ul class="navbar-nav ms-auto">
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        {{#if avatar}}
-                        <img src="{{avatar}}" style="width: 60%" alt="avatar" class="logo-img">
+
+                        {{#if isAvatar}}
+                        <img src="{{avatarUrl}}" style="width: 60%" alt="User Avatar" class="logo-img">
                         {{else}}
                         <img
                            src="https://img.uxwing.com/wp-content/themes/uxwing/download/checkmark-cross/cross-icon.png"
@@ -123,7 +126,6 @@
                   </li>
                </ul>
             </div>
-            {{/unless}}
          </div>
       </div>
    </nav>

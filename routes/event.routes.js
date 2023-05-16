@@ -113,5 +113,4 @@ router.post('/event/:id/delete', (req, res, next) => {
 });
 
 
-
 module.exports = router
