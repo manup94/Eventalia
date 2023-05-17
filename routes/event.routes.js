@@ -99,6 +99,7 @@ router.post('/event/:id/edit', (req, res, next) => {
 
 // Event favorites
 router.get('/event/:id/add', isLoggedIn, (req, res, next) => {
+
     const { id } = req.params
     const currentIdUser = req.session.currentUser._id;
     Event
@@ -112,6 +113,20 @@ router.get('/event/:id/add', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err));
 
 });
+
+
+router.get('/external-event/:id/add', isLoggedIn, (req, res, next) => {
+
+    const { id } = req.params
+    const currentIdUser = req.session.currentUser._id;
+
+    User
+        .findByIdAndUpdate(currentIdUser, { $push: { externalEvents: id } })
+        .then(res.redirect('/'))
+        .catch(err => console.log(err));
+
+});
+
 
 
 //Delete
