@@ -32,5 +32,4 @@ Theres are the endpoints that we are going to use in our proyect:
 | GET    | `/event/:_id/edit` | Edit event render | |
 | POST   | `/event/:_id/edit` | Edit event handler | |
 | POST   | `/event/:_id/delete` | Delete event | |
-| GET    | `/api/event` | Event list | X |
 | GET | `/externalEvent/:_id` | Event details | X |
