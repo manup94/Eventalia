@@ -1,3 +1,4 @@
+
 const isLoggedIn = (req, res, next) => {
     req.session.currentUser ? next() : res.render('auth/login', { errorMessage: 'Inicia sesión para continuar' })
 }
@@ -6,25 +7,17 @@ const isLoggedOut = (req, res, next) => {
     !req.session.currentUser ? next() : res.redirect('/event/event-list')
 }
 
-const checkRoles = (...admittedRoles) => (req, res, next) => {
+const isAdminCheck = (req, res, next) => {
+    const isAdmin = req.session.currentUser.role === 'ADMIN';
 
-    const isAdmitted = admittedRoles.includes(req.session.currentUser.role)
-
-    if (isAdmitted) {
-        next()
-    } else {
-        res.render('auth/login', { errorMessage: 'Acceso no autorizado' })
+    if (!isAdmin) {
+        return res.status(403).json({ error: 'Acceso denegado' });
     }
-}
-
-const checkUser = (req, res, next) => {
-    const { _id } = req.params
-    if (_id === req.session.currentUser._id || req.session.currentUser.role === 'ADMIN') {
-        next()
-    } else {
-        res.render('auth/login', { errorMessage: 'Acceso no autorizado' })
-    }
-}
+    req.currentUser.isAdmin = true
+    next();
+};
 
 
-module.exports = { isLoggedIn, isLoggedOut, checkRoles, checkUser }
+
+
+module.exports = { isLoggedIn, isLoggedOut, isAdminCheck }
