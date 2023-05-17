@@ -52,49 +52,14 @@ router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, n
 })
 
 // Details
-router.get('/event/:_id', isLoggedIn, (req, res, next) => {
 
-    const { _id } = req.params
 
-    const promises = [
-        Event.findById(_id),
-        eventApiHandler.getOneEvent(_id)
-    ]
-
-    Promise
-        .all(promises)
-        .then(promiseResults => {
-
-            const internalEvent = promiseResults[0]
-            const extrernalEvent = promiseResults[1].data.results
-
-            if (!extrernalEvent.length) res.render('event/event-detail', { internalEvent })
-            else res.render('event/event-detail', { extrernalEvent })
-        })
-        .catch(err => next(err))
-})
-
-router.get('/event/:id/add', isLoggedIn, (req, res, next) => {
-    const { id } = req.params
-    const currentIdUser = req.session.currentUser._id
-
-    Event
-        .findByIdAndUpdate(id, { $push: { assistants: currentIdUser } })
-        .then(() => {
-            User
-                .findByIdAndUpdate(currentIdUser, { $push: { events: id } })
-                .then(res.redirect('/user/profile'))
-                .catch(err => console.log(err));
-        })
-        .catch(err => console.log(err));
-
-});
 
 router.get('/internalEvent/:_id', isLoggedIn, (req, res, next) => {
     const { _id } = req.params
     Event
         .findById(_id)
-        .then(internalEvents => res.render('event/event-detail', internalEvents))
+        .then(internalEvents => res.render('event/event-internal-detail', internalEvents))
         .catch(err => next(err))
 })
 
@@ -131,6 +96,23 @@ router.post('/event/:id/edit', (req, res, next) => {
         .then(() => res.redirect('/'))
         .catch(() => res.redirect(`/event/${id}/edit`));
 });
+
+// Event favorites
+router.get('/event/:id/add', isLoggedIn, (req, res, next) => {
+    const { id } = req.params
+    const currentIdUser = req.session.currentUser._id;
+    Event
+        .findByIdAndUpdate(id, { $push: { assistants: currentIdUser } })
+        .then(() => {
+            User
+                .findByIdAndUpdate(currentIdUser, { $push: { events: id } })
+                .then(res.redirect('/'))
+                .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+
+});
+
 
 //Delete
 router.post('/event/:id/delete', (req, res, next) => {
