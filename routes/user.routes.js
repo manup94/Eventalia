@@ -3,7 +3,7 @@ const router = require("express").Router()
 
 const User = require("../models/User.model");
 const { isLoggedIn } = require('../middlewares/route-guard');
-
+// const { loggedUsers } = require('../middlewares/user-guard');
 
 //Profile
 // router.get('/user/:_id', isLoggedIn, (req, res) => {
@@ -23,7 +23,7 @@ router.get('/profile', isLoggedIn, (req, res) => {
         .then(user => {
             res.render('user/profile', user)
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 //Update
@@ -34,7 +34,7 @@ router.get('/:_id/edit', (req, res, next) => {
     User
         .findById(_id)
         .then(user => res.render("user/profile-edit", user))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 });
 
 router.post('/:_id/edit', (req, res, next) => {
@@ -51,8 +51,7 @@ router.post('/:_id/edit', (req, res, next) => {
     User
         .findByIdAndUpdate(_id, { username, email, interests, address })
         .then(() => res.redirect('/'))
-        .catch(() => next(err))
-
+        .catch(err => next(err))
 });
 
 
@@ -64,7 +63,7 @@ router.post('/:_id/delete', (req, res, next) => {
     User
         .findByIdAndDelete(_id)
         .then(() => res.redirect('/'))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 });
 
 

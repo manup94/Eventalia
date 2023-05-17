@@ -99,17 +99,25 @@ router.get('/:id/add', isLoggedIn, (req, res, next) => {
     const currentIdUser = req.session.currentUser._id
 
     // PROMISE ALL
-    Event
-        .findByIdAndUpdate(id, { $push: { assistants: currentIdUser } })
-        .then(() => {
-            User
-                .findByIdAndUpdate(currentIdUser, { $push: { events: id } })
-                .then(res.redirect('/'))
-                .catch(err => console.log(err));
-        })
-        .catch(err => console.log(err));
-
+    Promise.all([
+        Event.findByIdAndUpdate(id, { $push: { assistants: currentIdUser } }),
+        User.findByIdAndUpdate(currentIdUser, { $push: { events: id } })
+    ])
+        .then(res.redirect('/'))
+        .catch(err => next(err))
 });
+
+
+// Event
+//     .findByIdAndUpdate(id, { $push: { assistants: currentIdUser } })
+//     .then(() => {
+//         User
+//             .findByIdAndUpdate(currentIdUser, { $push: { events: id } })
+//             .then(res.redirect('/'))
+//             .catch(err => console.log(err));
+//     })
+//     .catch(err => next(err))
+
 
 
 router.get('/externalEvent/:id/add', isLoggedIn, (req, res, next) => {
@@ -120,7 +128,7 @@ router.get('/externalEvent/:id/add', isLoggedIn, (req, res, next) => {
     User
         .findByIdAndUpdate(currentIdUser, { $push: { externalEvents: id } })
         .then(res.redirect('/'))
-        .catch(err => console.log(err));
+        .catch(err => next(err));
 })
 
 
@@ -133,7 +141,7 @@ router.post('/:id/delete', (req, res, next) => {
     Event
         .findByIdAndDelete(id)
         .then(() => res.redirect('/event/list'))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 

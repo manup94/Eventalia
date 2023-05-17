@@ -25,7 +25,7 @@ router.post('/auth/signup', (req, res, next) => {
         .then(salt => bcrypt.hash(userPwd, salt))
         .then(hashedPassword => User.create({ email, username, avatar, interests, password: hashedPassword, address }))
         .then(createdUser => res.redirect('/auth/login'))
-        .catch(error => next(error))
+        .catch(err => next(err))
 })
 
 //Login render
@@ -50,7 +50,7 @@ router.post('/auth/login', (req, res, next) => {
                 res.redirect('/')
             }
         })
-        .catch(error => next(error))
+        .catch(err => next(err))
 })
 
 //Logout

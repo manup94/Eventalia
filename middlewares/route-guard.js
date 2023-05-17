@@ -26,5 +26,4 @@ const checkUser = (req, res, next) => {
     }
 }
 
-
 module.exports = { isLoggedIn, isLoggedOut, checkRoles, checkUser }
