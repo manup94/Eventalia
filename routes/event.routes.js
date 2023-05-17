@@ -33,11 +33,11 @@ router.get('/list', isLoggedIn, (req, res, next) => {
 
 
 // Create Event
-router.get('/event-create', isLoggedIn, isAdminCheck, (req, res, next) => {
+router.get('/event/event-create', isLoggedIn, (req, res, next) => {
     res.render('event/event-create')
 })
 
-router.post('/event-create', isLoggedIn, isAdminCheck, (req, res, next) => {
+router.post('/event/event-create', isLoggedIn, (req, res, next) => {
 
     const { title, description, category, start, end, city, lat, lng, eventImg, } = req.body;
     const location = {
@@ -49,7 +49,7 @@ router.post('/event-create', isLoggedIn, isAdminCheck, (req, res, next) => {
     Event
         .create({ title, description, category, start, end, city, location, eventImg })
         .then(res.redirect('/event/list'))
-        .catch(err => console.log(err));
+        .catch(err => next(err));
 })
 
 
@@ -83,7 +83,7 @@ router.get('/:id/edit', (req, res, next) => {
     Event
         .findById(id)
         .then(event => res.render("event/event-edit", event))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 });
 
 router.post('/:id/edit', (req, res, next) => {
@@ -94,7 +94,7 @@ router.post('/:id/edit', (req, res, next) => {
     Event
         .findByIdAndUpdate(id, { title, description, category, start, end, city, location, eventImg })
         .then(() => res.redirect('/'))
-        .catch(() => next(err));
+        .catch(err => next(err));
 });
 
 // Event favorites

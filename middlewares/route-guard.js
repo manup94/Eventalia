@@ -7,17 +7,17 @@ const isLoggedOut = (req, res, next) => {
     !req.session.currentUser ? next() : res.redirect('/event/event-list')
 }
 
-const isAdminCheck = (req, res, next) => {
-    const isAdmin = req.session.currentUser.role === 'ADMIN';
+// const isAdminCheck = (req, res, next) => {
+//     const isAdmin = req.session.currentUser.role === 'ADMIN';
 
-    if (!isAdmin) {
-        return res.status(403).json({ error: 'Acceso denegado' });
-    }
-    req.currentUser.isAdmin = true
-    next();
-};
-
-
+//     if (!isAdmin) {
+//         return res.status(403).json({ error: 'Acceso denegado' });
+//     }
+//     req.currentUser.isAdmin = true
+//     next();
+// };
 
 
-module.exports = { isLoggedIn, isLoggedOut, isAdminCheck }
+
+
+module.exports = { isLoggedIn, isLoggedOut }
