@@ -28,9 +28,9 @@ Theres are the endpoints that we are going to use in our proyect:
 | GET    | `/event/list` | Event list | |
 | GET    | `/event/event-create` | New event render | |
 | POST   | `/event/event-create` | New event handler | |
-| GET    | `/event/:_id` | Event details | |
+| GET    | `/internalEvent/:_id` | Event details | |
 | GET    | `/event/:_id/edit` | Edit event render | |
 | POST   | `/event/:_id/edit` | Edit event handler | |
 | POST   | `/event/:_id/delete` | Delete event | |
 | GET    | `/api/event` | Event list | X |
-| POST   | `/api/event/:_id` | Event details | X |
+| GET | `/externalEvent/:_id` | Event details | X |

@@ -1,11 +1,12 @@
 <div class="container mt-5">
+    {{#each events}}
     <br>
     <h1>{{title}} </h1>
     <hr>
     <div class="row">
-        <div class="col-md-4">
+        {{!-- <div class="col-md-4">
             <img src="{{eventImg}}" style="width: 100%" alt="#">
-        </div>
+        </div> --}}
         <div class="col">
             <h3>Info:</h3>
             <ul>
@@ -18,7 +19,7 @@
                 <br>
                 <li><strong>End:</strong> {{end}}</li>
                 <br>
-                <li><strong>City:</strong> {{location.city}}</li>
+                <li><strong>Country:</strong> {{country}}</li>
                 <br>
                 <li><strong>Assistants:</strong>
                     <br>
@@ -48,4 +49,5 @@
             <input type="submit" value="Delete" class="btn btn-danger mt-3 mb-5">
         </form>
     </div>
+    {{/each}}
 </div>
