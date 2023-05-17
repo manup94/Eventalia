@@ -27,14 +27,15 @@
         {{#each externalEvents}}
         <div class="col-md-4">
             <h3><a class="text-decoration-none text-black" href="/externalEvent/{{id}}">{{title}}</a></h3>
-            <p>{{title}}</p>
+            <article class="cards">
+                <img src="{{eventImg}}" style="width: 50%" alt="">
+            </article>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
             <div class="btn">
                 <a href="/externalEvent/{{id}}" class="btn btn-dark">More Information</a>
+                <div class="btn">Home</div>
             </div>
-            <hr>
         </div>
         {{/each}}
     </div>
-</div>
