@@ -6,13 +6,23 @@ const { isLoggedIn } = require('../middlewares/route-guard');
 
 
 //Profile
-router.get('/user/:_id', isLoggedIn, (req, res) => {
+// router.get('/user/:_id', isLoggedIn, (req, res) => {
+//     const id = req.session.currentUser._id
+//     User
+//         .findById(id)
+//         .then(user => res.render('user/profile', user))
+//         .catch(err => console.log(err))
+// })
+
+router.get('/user/profile', isLoggedIn, (req, res) => {
     const id = req.session.currentUser._id
-    User.findById(id)
-        .then(user => res.render('user/profile', user))
+    User
+        .findById(id).populate('events')
+        .then(user => {
+            res.render('user/profile', user)
+        })
         .catch(err => console.log(err))
 })
-
 
 //Update
 router.get('/user/:_id/edit', (req, res, next) => {

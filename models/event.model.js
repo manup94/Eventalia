@@ -22,7 +22,6 @@ const eventSchema = new Schema(
             type: Date,
             required: true
         },
-
         location: {
             type: {
                 type: String

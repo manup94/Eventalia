@@ -1,5 +1,6 @@
 const express = require('express');
 const router = require("express").Router()
+const User = require("../models/User.model")
 const Event = require("../models/Event.model")
 
 const { isLoggedIn, checkRoles } = require('../middlewares/route-guard');
@@ -51,7 +52,6 @@ router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, n
 })
 
 // Details
-
 router.get('/event/:_id', isLoggedIn, (req, res, next) => {
 
     const { _id } = req.params
@@ -68,14 +68,27 @@ router.get('/event/:_id', isLoggedIn, (req, res, next) => {
             const internalEvent = promiseResults[0]
             const extrernalEvent = promiseResults[1].data.results
 
-            console.log(internalEvent, extrernalEvent)
-
             if (!extrernalEvent.length) res.render('event/event-detail', { internalEvent })
             else res.render('event/event-detail', { extrernalEvent })
         })
         .catch(err => next(err))
 })
 
+router.get('/event/:id/add', isLoggedIn, (req, res, next) => {
+    const { id } = req.params
+    const currentIdUser = req.session.currentUser._id
+
+    Event
+        .findByIdAndUpdate(id, { $push: { assistants: currentIdUser } })
+        .then(() => {
+            User
+                .findByIdAndUpdate(currentIdUser, { $push: { events: id } })
+                .then(res.redirect('/user/profile'))
+                .catch(err => console.log(err));
+        })
+        .catch(err => console.log(err));
+
+});
 
 
 // Update
@@ -111,6 +124,5 @@ router.post('/event/:id/delete', (req, res, next) => {
         .then(() => res.redirect('/event/list'))
         .catch(err => console.log(err))
 });
-
 
 module.exports = router

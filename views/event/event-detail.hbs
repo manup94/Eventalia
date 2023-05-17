@@ -7,7 +7,7 @@
             <img src="{{internalEvent.eventImg}}" style="width: 100%" alt="#">
         </div>
         <div class="col">
-            <h3>Info:</h3>
+            <h3>Information:</h3>
             <ul>
                 <br>
                 <li><strong>Category:</strong> {{internalEvent.category}}</li>
@@ -25,7 +25,9 @@
                     <img src="/images/Stacked.png" style="width: 20%" alt="">
                 </li>
                 <br>
-                <button class="btn btn-primary">Save Event ❤️</button>
+                <div class="btn">
+                    <a href="/event/{{internalEvent._id}}/add" class="btn btn-primary">Save Event ❤️</a>
+                </div>
             </ul>
         </div>
         <hr>
