@@ -113,17 +113,6 @@ router.get('/:id/add', isLoggedIn, (req, res, next) => {
 });
 
 
-// Event
-//     .findByIdAndUpdate(id, { $push: { assistants: currentIdUser } })
-//     .then(() => {
-//         User
-//             .findByIdAndUpdate(currentIdUser, { $push: { events: id } })
-//             .then(res.redirect('/'))
-//             .catch(err => console.log(err));
-//     })
-//     .catch(err => next(err))
-
-
 
 router.get('/externalEvent/:id/add', isLoggedIn, (req, res, next) => {
 

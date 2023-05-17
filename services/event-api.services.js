@@ -11,21 +11,21 @@ class EventApiHandler {
     getEvents() {
         return this.axiosApp.get('/events', {
             headers: {
-                'Authorization': 'Bearer 56B_yqklDeuazp4Rw3C9xGJlRhFvemFHMgv7kNdK'
+                'Authorization': process.env.API_KEY
             }
         })
     }
     getOneEvent(_id) {
         return this.axiosApp.get(`/events?id=${_id}`, {
             headers: {
-                'Authorization': 'Bearer 56B_yqklDeuazp4Rw3C9xGJlRhFvemFHMgv7kNdK'
+                'Authorization': process.env.API_KEY
             }
         })
     }
     getEventAndUpdate(_id, changes) {
         return this.axiosApp.get(`/events?id=${_id}`, changes, {
             headers: {
-                'Authorization': 'Bearer 56B_yqklDeuazp4Rw3C9xGJlRhFvemFHMgv7kNdK'
+                'Authorization': process.env.API_KEY
             }
         })
     }
