@@ -13,21 +13,8 @@ require('./config/session.config')(app)
 //For the navbar and user
 app.use(loggedUsers)
 
-// Start handling routes
-const indexRoutes = require("./routes/index.routes");
-app.use("/", indexRoutes);
 
-const authRoutes = require("./routes/auth.routes");
-app.use("/", authRoutes);
-
-const eventRoutes = require("./routes/event.routes");
-app.use("/event", eventRoutes);
-
-const userRoutes = require("./routes/user.routes");
-app.use("/user", userRoutes);
-
-const mapRoutes = require("./routes/map.routes");
-app.use("/map", mapRoutes);
+require("./routes/index")(app)
 
 require("./error-handling")(app)
 
