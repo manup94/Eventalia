@@ -5,32 +5,36 @@
     <div class="row">
         <h2>Our Events</h2>
         <hr>
+        <br>
         {{#each internalEvents}}
-        <div class="col-md-4">
-            <h3><a class="text-decoration-none text-black" href="/internalEvent/{{_id}}">{{title}}</a></h3>
+        <div class="col ms-5" style="margin: 10px">
+            <h4><a class="text-decoration-none text-black" href="/internalEvent/{{_id}}">{{title}}</a></h4>
             <article class="cards">
-                <img src="{{eventImg}}" style="width: 50%" alt="">
+                <img src="{{eventImg}}" style="width: 65%" alt="">
             </article>
+            <br>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
             <div class="btn">
-                <a href="/event/event-detail" class="btn btn-primary">More Information</a>
+                <a href="/internalEvent/{{_id}}" class="btn btn-primary">More Information</a>
             </div>
         </div>
         {{/each}}
     </div>
     <br>
-    <div class="row">
+    <div class="row" style="margin: 50px">
         <h2>Comunity Events</h2>
+        <hr>
         {{#each externalEvents}}
-        <div class="col-md-4">
-            <h3><a class="text-decoration-none text-black" href="/externalEvent/{{id}}">{{title}}</a></h3>
+        <div class="col-4" style="margin-top: 20px;">
+            <h4><a class="text-decoration-none text-black" href="/externalEvent/{{id}}">{{title}}</a></h4>
             <p>{{title}}</p>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
             <div class="btn">
-                <a href="/event/event-detail" class="btn btn-primary">More Information</a>
+                <a href="/externalEvent/{{id}}" class="btn btn-primary">More Information</a>
             </div>
+            <br>
         </div>
         {{/each}}
     </div>

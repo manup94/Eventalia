@@ -32,7 +32,8 @@ const eventSchema = new Schema(
             coordinates: [Number]
         },
         eventImg: {
-            type: String
+            type: String,
+            default: 'https://dancingastronaut.com/wp-content/uploads/2021/07/Ivan-Meneses-for-Insomniac-Events-11.jpg'
         },
         assistants: [{
             type: Schema.Types.ObjectId,
