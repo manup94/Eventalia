@@ -1,38 +1,39 @@
-// let myMap
-
-// function initViewMarkers() {
-//     initMap()
-//     getPlacesJSON()
-// }
-
-
 // function initMap() {
-//     myMap = new google.maps.Map(
-//         document.querySelector('#map'),
-//         { zoom: 12, center: { lat: 40.392521370648154, lng: - 3.6989879718518366 }, }
-//     )
+//     // Coordenadas para el puntero
+//     var coordenadas = { lat: 40.3926, lng: -3.6988 };
+
+//     // Crear un mapa nuevo centrado en las coordenadas
+//     var mapa = new google.maps.Map(document.getElementById('map'), {
+//         center: coordenadas,
+//         zoom: 10 // Puedes ajustar el nivel de zoom según tus necesidades
+//     });
+
+//     // Agregar el puntero al mapa
+//     var marcador = new google.maps.Marker({
+//         position: coordenadas,
+//         map: mapa,
+//         title: 'Mi ubicación' // Opcional: un título para el puntero
+//     });
 // }
 
+function initMap() {
+    // Crear un mapa nuevo centrado en las coordenadas actuales
+    navigator.geolocation.getCurrentPosition(function (position) {
+        var coordenadas = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+        };
 
-// function getPlacesJSON() {
-//     fetch('/api/places')
-//         .then(res => res.json())
-//         .then(placesJSON => renderPlacesMarkers(placesJSON))
-//         .catch(err => console.log(err))
-// }
+        var mapa = new google.maps.Map(document.getElementById('map'), {
+            center: coordenadas,
+            zoom: 10
+        });
 
-
-// function renderPlacesMarkers(restaurantsJSON) {
-
-//     restaurantsJSON.forEach(elm => {
-
-//         const placesCoords = { lat: elm.location.coordinates[0], lng: elm.location.coordinates[1] }
-
-//         new google.maps.Marker({
-//             map: myMap,
-//             position: placesCoords,
-//             title: elm.name
-//         })
-
-//     })
-// }
+        // Agregar el marcador en las coordenadas actuales
+        var marcador = new google.maps.Marker({
+            position: coordenadas,
+            map: mapa,
+            title: 'Mi ubicación'
+        });
+    });
+}
