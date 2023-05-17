@@ -2,7 +2,7 @@
     <br>
     <h1>Event List</h1>
     <hr>
-    <div class="row">
+    <div class="row" style='margin: 20px; margin-bottom: 10px'>
         <h2>Our Events</h2>
         <hr>
         {{#each internalEvents}}
@@ -13,26 +13,28 @@
             </article>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
-
+            <div class="btn">
+                <a href="/internalEvent/{{_id}}" class="btn btn-dark">More Information</a>
+            </div>
         </div>
         {{/each}}
     </div>
-    <br>
-    <div class="row">
-        <h2>Comunity Events</h2>
+
+    <div class='row' style='margin: 20px; margin-bottom: 10px'>
+        <hr>
+        <h2>Comunity events</h2>
+        <hr>
         {{#each externalEvents}}
         <div class="col-md-4">
             <h3><a class="text-decoration-none text-black" href="/externalEvent/{{id}}">{{title}}</a></h3>
             <p>{{title}}</p>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
-
+            <div class="btn">
+                <a href="/externalEvent/{{id}}" class="btn btn-dark">More Information</a>
+            </div>
+            <hr>
         </div>
         {{/each}}
     </div>
-    <div class="btn">
-        <a href="/" class="btn btn-dark mt-3 mb-5">Home</a>
-    </div>
-    <br>
 </div>
-<br>

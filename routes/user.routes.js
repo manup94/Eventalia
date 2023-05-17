@@ -3,62 +3,58 @@ const router = require("express").Router()
 
 const User = require("../models/User.model");
 const { isLoggedIn } = require('../middlewares/route-guard');
-
-
 //Profile
-// router.get('/user/:_id', isLoggedIn, (req, res) => {
-//     const id = req.session.currentUser._id
-//     User
-//         .findById(id)
-//         .then(user => res.render('user/profile', user))
-//         .catch(err => console.log(err))
-// })
 
-router.get('/user/profile', isLoggedIn, (req, res) => {
-    const id = req.session.currentUser._id
+router.get('/profile', isLoggedIn, (req, res) => {
+
+    const { _id } = req.session.currentUser
+
     User
-        .findById(id).populate('events')
+        .findById(_id).populate('events')
         .then(user => {
             res.render('user/profile', user)
         })
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 //Update
-router.get('/user/:_id/edit', (req, res, next) => {
+router.get('/:_id/edit', (req, res, next) => {
 
-    const id = req.session.currentUser._id
+    const { _id } = req.session.currentUser
+
     User
-        .findById(id)
+        .findById(_id)
         .then(user => res.render("user/profile-edit", user))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 });
 
-router.post('/user/:_id/edit', (req, res, next) => {
+router.post('/:_id/edit', (req, res, next) => {
 
     const { username, email, interests } = req.body
-    const { id } = req.session.currentUser._id
+
+    const { _id } = req.session.currentUser
+
     const address = {
         city: req.body.city,
         zipcode: req.body.zipcode
     }
-    User
-        .findByIdAndUpdate(id, { username, email, interests, address })
-        .then(() => res.redirect('/'))
-        .catch(() => res.redirect(`/user/${id}/edit`))
 
+    User
+        .findByIdAndUpdate(_id, { username, email, interests, address })
+        .then(() => res.redirect('/'))
+        .catch(err => next(err))
 });
 
 
 //Delete
-router.post('/user/:_id/delete', (req, res, next) => {
+router.post('/:_id/delete', (req, res, next) => {
 
-    const id = req.session.currentUser._id
+    const { _id } = req.session.currentUser
 
     User
-        .findByIdAndDelete(id)
+        .findByIdAndDelete(_id)
         .then(() => res.redirect('/'))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 });
 
 

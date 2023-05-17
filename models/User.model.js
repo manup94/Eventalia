@@ -13,7 +13,7 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      default: 'https://i.stack.imgur.com/l60Hf.png'
+      default: 'https://img.uxwing.com/wp-content/themes/uxwing/download/checkmark-cross/cross-icon.png'
     },
     interests: [
       {
@@ -41,6 +41,9 @@ const userSchema = new Schema(
     events: [{
       type: Schema.Types.ObjectId,
       ref: 'Event'
+    }],
+    externalEvents: [{
+      type: String
     }]
   },
   {
