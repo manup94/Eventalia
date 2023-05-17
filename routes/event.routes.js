@@ -125,7 +125,7 @@ router.get('/external-event/:id/add', isLoggedIn, (req, res, next) => {
         .then(res.redirect('/'))
         .catch(err => console.log(err));
 
-});
+})
 
 
 
