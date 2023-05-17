@@ -7,9 +7,9 @@
         <hr>
         {{#each internalEvents}}
         <div class="col-md-4">
-            <h3><a class="text-decoration-none text-black" href="/event/{{_id}}">{{title}}</a></h3>
+            <h3><a class="text-decoration-none text-black" href="/internalEvent/{{_id}}">{{title}}</a></h3>
             <article class="cards">
-                <img src="{{eventImg}}" style="width: 50%"alt="">
+                <img src="{{eventImg}}" style="width: 50%" alt="">
             </article>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
@@ -20,9 +20,9 @@
     <br>
     <div class="row">
         <h2>Comunity Events</h2>
-        {{#each extrernalEvents}}
+        {{#each externalEvents}}
         <div class="col-md-4">
-            <h3><a class="text-decoration-none text-black" href="/event/{{id}}">{{title}}</a></h3>
+            <h3><a class="text-decoration-none text-black" href="/externalEvent/{{id}}">{{title}}</a></h3>
             <p>{{title}}</p>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>

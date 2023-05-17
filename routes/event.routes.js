@@ -24,9 +24,9 @@ router.get('/event/list', isLoggedIn, (req, res, next) => {
         .then(promiseResults => {
 
             const internalEvents = promiseResults[0]
-            const extrernalEvents = promiseResults[1].data.results
+            const externalEvents = promiseResults[1].data.results
 
-            res.render('event/event-list', { internalEvents, extrernalEvents })
+            res.render('event/event-list', { internalEvents, externalEvents })
         })
         .catch(err => next(err))
 })
@@ -89,6 +89,24 @@ router.get('/event/:id/add', isLoggedIn, (req, res, next) => {
         .catch(err => console.log(err));
 
 });
+
+router.get('/internalEvent/:_id', isLoggedIn, (req, res, next) => {
+    const { _id } = req.params
+    Event
+        .findById(_id)
+        .then(internalEvents => res.render('event/event-detail', internalEvents))
+        .catch(err => next(err))
+})
+
+router.get('/externalEvent/:id', isLoggedIn, (req, res, next) => {
+
+    const { id } = req.params
+
+    eventApiHandler
+        .getOneEvent(id)
+        .then(externalEvents => res.render('event/event-external-detail', { events: externalEvents.data.results }))
+        .catch(err => next(err))
+})
 
 
 // Update

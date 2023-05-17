@@ -16,6 +16,7 @@ class EventApiHandler {
         })
     }
     getOneEvent(_id) {
+        console.log(_id)
         return this.axiosApp.get(`/events?id=${_id}`, {
             headers: {
                 'Authorization': 'Bearer 56B_yqklDeuazp4Rw3C9xGJlRhFvemFHMgv7kNdK'
