@@ -3,8 +3,6 @@ const router = require("express").Router()
 
 const User = require("../models/User.model");
 const { isLoggedIn } = require('../middlewares/route-guard');
-// const { loggedUsers } = require('../middlewares/user-guard');
-
 //Profile
 
 router.get('/profile', isLoggedIn, (req, res) => {

@@ -1,5 +1,5 @@
 const loggedUsers = (req, res, next) => {
-    
+
     const loggedUser = req.session.currentUser;
     const userAdmin = req.session.currentUser?.role;
     const userAvatar = req.session.currentUser?.avatar;

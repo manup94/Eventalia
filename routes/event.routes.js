@@ -3,7 +3,7 @@ const router = require("express").Router()
 const User = require("../models/User.model")
 const Event = require("../models/Event.model")
 
-const { isLoggedIn, checkRoles, isAdminCheck } = require('../middlewares/route-guard');
+const { isLoggedIn } = require('../middlewares/route-guard');
 const eventApiHandler = require('../services/event-api.services');
 
 // event list
@@ -109,20 +109,7 @@ router.get('/:id/add', isLoggedIn, (req, res, next) => {
         User.findByIdAndUpdate(currentIdUser, { $push: { events: id } })
     ])
         .then(res.redirect('/'))
-        .catch(err => next(err))
-});
-
-
-
-router.get('/externalEvent/:id/add', isLoggedIn, (req, res, next) => {
-
-    const { id } = req.params
-    const currentIdUser = req.session.currentUser._id;
-
-    User
-        .findByIdAndUpdate(currentIdUser, { $push: { externalEvents: id } })
-        .then(res.redirect('/'))
-        .catch(err => next(err));
+        .catch(err => console.log(err));
 })
 
 
@@ -135,7 +122,7 @@ router.post('/:id/delete', (req, res, next) => {
     Event
         .findByIdAndDelete(id)
         .then(() => res.redirect('/event/list'))
-        .catch(err => next(err))
+        .catch(err => console.log(err))
 })
 
 

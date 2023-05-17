@@ -32,12 +32,12 @@
                   <a class="nav-link" href="/event/event-create">Create Event</a>
                </li>
                {{/if}}
-               {{#unless hideLogin}}
+               {{#unless hideSignUp}}
                <li class="nav-item">
                   <a class="nav-link" href="/auth/signup">Sign Up</a>
                </li>
                {{/unless}}
-               {{#unless hideSignUp}}
+               {{#unless hideLogin}}
                <li class="nav-item">
                   <a class="nav-link" href="/auth/login">Log in</a>
                </li>
@@ -59,7 +59,7 @@
                      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
                         <form action="/auth/logout" method="POST">
-                           <button class="nav-link">Logout</button>
+                           <button cla/authav-link">Logout</button>
                         </form>
                      </ul>
                   </li>
