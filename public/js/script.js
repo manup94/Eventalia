@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-var imagen = document.getElementById("myImage");
-var avatarUrl = "https://i.stack.imgur.com/l60Hf.png"; // La URL de la imagen de avatar del usuario
-imagen.src = avatarUrl;
+// var imagen = document.getElementById("myImage");
+// var avatarUrl = "https://i.stack.imgur.com/l60Hf.png"; // La URL de la imagen de avatar del usuario
+// imagen.src = avatarUrl;
 
 
