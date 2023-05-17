@@ -7,12 +7,7 @@ const { isLoggedIn, checkRoles } = require('../middlewares/route-guard');
 const eventApiHandler = require('../services/event-api.services');
 
 // event list
-router.get('/event/list', isLoggedIn, (req, res, next) => {
-
-    const userRole = {
-        isUser: req.session.currentUser?.role === 'USER',
-        isAdmin: req.session.currentUser?.role === 'ADMIN'
-    }
+router.get('/list', isLoggedIn, (req, res, next) => {
 
     const promises = [
         Event.find(),
@@ -32,31 +27,32 @@ router.get('/event/list', isLoggedIn, (req, res, next) => {
 })
 
 
-// Create Event//
-router.get('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
+// Create Event
+router.get('/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
     res.render('event/event-create')
-
 })
-router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
+
+router.post('/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
+
     const { title, description, category, start, end, city, lat, lng, eventImg, } = req.body;
     const location = {
         type: 'Point',
         coordinates: [lat, lng],
         city
     }
+
     Event
         .create({ title, description, category, start, end, city, location, eventImg })
         .then(res.redirect('/event/list'))
         .catch(err => console.log(err));
-
 })
 
+
 // Details
-
-
-
 router.get('/internalEvent/:_id', isLoggedIn, (req, res, next) => {
+
     const { _id } = req.params
+
     Event
         .findById(_id)
         .then(internalEvents => res.render('event/event-internal-detail', internalEvents))
@@ -75,7 +71,7 @@ router.get('/externalEvent/:id', isLoggedIn, (req, res, next) => {
 
 
 // Update
-router.get('/event/:id/edit', (req, res, next) => {
+router.get('/:id/edit', (req, res, next) => {
 
     const { id } = req.params
 
@@ -85,23 +81,24 @@ router.get('/event/:id/edit', (req, res, next) => {
         .catch(err => console.log(err))
 });
 
-router.post('/event/:id/edit', (req, res, next) => {
+router.post('/:id/edit', (req, res, next) => {
+
     const { title, description, category, start, end, city, location, eventImg } = req.body
     const { id } = req.params
-
-    // res.send(id)
 
     Event
         .findByIdAndUpdate(id, { title, description, category, start, end, city, location, eventImg })
         .then(() => res.redirect('/'))
-        .catch(() => res.redirect(`/event/${id}/edit`));
+        .catch(() => next(err));
 });
 
 // Event favorites
-router.get('/event/:id/add', isLoggedIn, (req, res, next) => {
+router.get('/:id/add', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
-    const currentIdUser = req.session.currentUser._id;
+    const currentIdUser = req.session.currentUser._id
+
+    // PROMISE ALL
     Event
         .findByIdAndUpdate(id, { $push: { assistants: currentIdUser } })
         .then(() => {
@@ -115,7 +112,7 @@ router.get('/event/:id/add', isLoggedIn, (req, res, next) => {
 });
 
 
-router.get('/external-event/:id/add', isLoggedIn, (req, res, next) => {
+router.get('/externalEvent/:id/add', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
     const currentIdUser = req.session.currentUser._id;
@@ -124,13 +121,12 @@ router.get('/external-event/:id/add', isLoggedIn, (req, res, next) => {
         .findByIdAndUpdate(currentIdUser, { $push: { externalEvents: id } })
         .then(res.redirect('/'))
         .catch(err => console.log(err));
-
 })
 
 
 
 //Delete
-router.post('/event/:id/delete', (req, res, next) => {
+router.post('/:id/delete', (req, res, next) => {
 
     const { id } = req.params
 
@@ -138,6 +134,7 @@ router.post('/event/:id/delete', (req, res, next) => {
         .findByIdAndDelete(id)
         .then(() => res.redirect('/event/list'))
         .catch(err => console.log(err))
-});
+})
+
 
 module.exports = router
