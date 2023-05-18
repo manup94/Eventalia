@@ -6,7 +6,7 @@
         <h2>Our Events</h2>
         <hr>
         {{#each internalEvents}}
-        <div class="col-md-4">
+        <div class="col">
             <h3><a class="text-decoration-none text-black" href="/internalEvent/{{_id}}">{{title}}</a></h3>
             <article class="cards">
                 <img src="{{eventImg}}" style="width: 50%" alt="">
@@ -14,7 +14,7 @@
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
             <div class="btn">
-                <a href="/internalEvent/{{_id}}" class="btn btn-dark">More Information</a>
+                <a href="/internalEvent/{{_id}}" class="btn btn-success">More Information</a>
             </div>
         </div>
         {{/each}}
@@ -34,8 +34,12 @@
             <p>End: {{end}}</p>
             <div class="btn">
                 <a href="/externalEvent/{{id}}" class="btn btn-dark">More Information</a>
-
             </div>
+            <hr>
         </div>
         {{/each}}
     </div>
+    <div class="btn">
+        <a href="" class="btn btn-primary">HOME</a>
+    </div>
+</div>

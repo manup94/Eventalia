@@ -11,6 +11,8 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
+
+
 <body>
    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
@@ -27,29 +29,27 @@
                <li class="nav-item">
                   <a class="nav-link" href="/list">Events</a>
                </li>
-               {{#if isAdmin}}
+               {{#if loggedUsers}}
                <li class="nav-item">
                   <a class="nav-link" href="/event/event-create">Create Event</a>
                </li>
-               {{/if}}
-               {{#unless hideSignUp}}
+               {{else}}
                <li class="nav-item">
                   <a class="nav-link" href="/auth/signup">Sign Up</a>
                </li>
-               {{/unless}}
-               {{#unless hideLogin}}
                <li class="nav-item">
                   <a class="nav-link" href="/auth/login">Log in</a>
                </li>
-               {{/unless}}
+               {{/if}}
             </ul>
+            {{!-- {{else}} --}}
             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                <ul class="navbar-nav ms-auto">
                   <li class="nav-item dropdown">
                      <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
-                        {{#if avatar}}
-                        <img src="{{avatar}}" style="width: 60%" alt="avatar" class="logo-img">
+                        {{#if loggedUsers}}
+                        <img src="{{loggedUsers.avatar}}" style="width: 60%" alt="avatar" class="logo-img">
                         {{else}}
                         <img
                            src="https://img.uxwing.com/wp-content/themes/uxwing/download/checkmark-cross/cross-icon.png"
@@ -58,7 +58,7 @@
                      </a>
                      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                         <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
-                        <form action="/auth/logout" method="POST">
+                        <form action="/auth/logout" class="dropdown-item" method="POST">
                            <button> Logout</button>
                         </form>
                      </ul>
@@ -68,8 +68,6 @@
          </div>
       </div>
    </nav>
-
-
 
    {{{body}}}
 

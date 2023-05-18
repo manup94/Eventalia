@@ -25,7 +25,7 @@ router.get('/list', isLoggedIn, (req, res, next) => {
 
             const internalEvents = promiseResults[0]
             const externalEvents = promiseResults[1].data.results
-
+            console.log('------------------------------------------------------------', internalEvents)
             res.render('event/event-list', { internalEvents, externalEvents })
         })
         .catch(err => next(err))
@@ -48,7 +48,7 @@ router.post('/event/event-create', isLoggedIn, (req, res, next) => {
 
     Event
         .create({ title, description, category, start, end, city, location, eventImg })
-        .then(res.redirect('/event/list'))
+        .then(res.redirect('/list'))
         .catch(err => next(err));
 })
 
@@ -108,7 +108,7 @@ router.get('/:id/add', isLoggedIn, (req, res, next) => {
         Event.findByIdAndUpdate(id, { $push: { assistants: currentIdUser } }),
         User.findByIdAndUpdate(currentIdUser, { $push: { events: id } })
     ])
-        .then(res.redirect('/'))
+        .then(res.redirect('/user/profile'))
         .catch(err => console.log(err));
 })
 
@@ -121,7 +121,7 @@ router.post('/:id/delete', (req, res, next) => {
 
     Event
         .findByIdAndDelete(id)
-        .then(() => res.redirect('/event/list'))
+        .then(() => res.redirect('/list'))
         .catch(err => console.log(err))
 })
 
