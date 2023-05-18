@@ -6,6 +6,7 @@ const Event = require("../models/event.model")
 const { isLoggedIn } = require('../middlewares/route-guard');
 const { checkRoles } = require('../middlewares/user-guard');
 const eventApiHandler = require('../services/event-api.services');
+const { formatDate } = require('../utils/formatDate');
 
 
 // event list
