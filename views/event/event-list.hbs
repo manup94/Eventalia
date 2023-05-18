@@ -1,15 +1,14 @@
 <div class="container list mt-5">
     <br>
-    <h1>Event List</h1>
     <hr>
-    <div class="row" style='margin: 20px; margin-bottom: 10px'>
-        <h2>Our Events</h2>
+    <div class="row text-center" style='margin: 20px; margin-bottom: 10px'>
+        <h1>Our Events</h1>
         <hr>
-        {{#each internalEvents}}
-        <div class="col">
+        {{#each newInternal}}
+        <div class="col-md-4">
             <h3><a class="text-decoration-none text-black" href="/internalEvent/{{_id}}">{{title}}</a></h3>
             <article class="cards">
-                <img src="{{eventImg}}" style="width: 50%" alt="">
+                <img src="{{eventImg}}" style="width: 50%" alt="#">
             </article>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
@@ -20,20 +19,21 @@
         {{/each}}
     </div>
 
-    <div class='row' style='margin: 20px; margin-bottom: 10px'>
+    <div class='row text-center' style='margin: 20px; margin-bottom: 10px'>
         <hr>
-        <h2>Comunity events</h2>
+        <h1>Comunity events</h1>
         <hr>
         {{#each externalEvents}}
         <div class="col-md-4">
             <h3><a class="text-decoration-none text-black" href="/externalEvent/{{id}}">{{title}}</a></h3>
             <article class="cards">
-                <img src="{{eventImg}}" style="width: 50%" alt="">
+                <img src="https://dancingastronaut.com/wp-content/uploads/2021/07/Ivan-Meneses-for-Insomniac-Events-11.jpg"
+                    style="width: 50%" alt="#">
             </article>
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
             <div class="btn">
-                <a href="/externalEvent/{{id}}" class="btn btn-dark">More Information</a>
+                <a href="/externalEvent/{{id}}" class="btn btn-success">More Information</a>
             </div>
             <hr>
         </div>

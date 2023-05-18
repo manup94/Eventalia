@@ -28,6 +28,14 @@ body {
   background-color: rgb(194, 223, 248);
 }
 
+.img-principal {
+  height: 520px;
+}
+
 .avatar {
   width: 100%;
+}
+
+h1 {
+  font-family: 'Cormorant Infant', serif;
 }
