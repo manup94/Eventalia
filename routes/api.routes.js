@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// const Event = require("../models/Event.model")
+const Event = require("../models/Event.model")
 
 
 router.get("/internalEvent/:event_id", (req, res, next) => {

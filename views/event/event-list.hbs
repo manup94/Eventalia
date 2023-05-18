@@ -1,11 +1,11 @@
-<div class="container list mt-5">
+<div class="container list ">
     <br>
     <hr>
-    <div class="row text-center" style='margin: 20px; margin-bottom: 10px'>
+    <div class="row text-center justify-content-center" style='margin: 20px; margin-bottom: 10px'>
         <h1>Our Events</h1>
         <hr>
         {{#each newInternal}}
-        <div class="col-md-4">
+        <div class="col-md-4 d-flex flex-column justify-content-between">
             <h3><a class="text-decoration-none text-black" href="/internalEvent/{{_id}}">{{title}}</a></h3>
             <article class="cards">
                 <img src="{{eventImg}}" style="width: 50%" alt="#">
@@ -13,18 +13,18 @@
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
             <div class="btn">
-                <a href="/internalEvent/{{_id}}" class="btn btn-success">More Information</a>
+                <a href="/internalEvent/{{_id}}" class="btn btn-dark">More Information</a>
             </div>
         </div>
         {{/each}}
     </div>
 
-    <div class='row text-center' style='margin: 20px; margin-bottom: 10px'>
+    <div class='row text-center justify-content-center' style='margin: 20px; margin-bottom: 10px'>
         <hr>
         <h1>Comunity events</h1>
         <hr>
         {{#each externalEvents}}
-        <div class="col-md-4">
+        <div class="col-md-4  d-flex flex-column justify-content-between">
             <h3><a class="text-decoration-none text-black" href="/externalEvent/{{id}}">{{title}}</a></h3>
             <article class="cards">
                 <img src="https://dancingastronaut.com/wp-content/uploads/2021/07/Ivan-Meneses-for-Insomniac-Events-11.jpg"
@@ -33,13 +33,13 @@
             <p>Start: {{start}}</p>
             <p>End: {{end}}</p>
             <div class="btn">
-                <a href="/externalEvent/{{id}}" class="btn btn-success">More Information</a>
+                <a href="/externalEvent/{{id}}" class="btn btn-dark">More Information</a>
             </div>
             <hr>
         </div>
         {{/each}}
     </div>
     <div class="btn">
-        <a href="" class="btn btn-primary">HOME</a>
+        <a href="" class="btn btn-dark">HOME</a>
     </div>
 </div>
