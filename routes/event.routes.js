@@ -1,7 +1,7 @@
 const express = require('express');
 const router = require("express").Router()
 const User = require("../models/User.model")
-const Event = require("../models/event.model")
+const Event = require("../models/Event.model")
 
 const { isLoggedIn } = require('../middlewares/route-guard');
 const { checkRoles } = require('../middlewares/user-guard');
@@ -23,20 +23,35 @@ router.get('/list', isLoggedIn, (req, res, next) => {
 
             const internalEvents = promiseResults[0]
             const externalEvents = promiseResults[1].data.results
-            res.render('event/event-list', { internalEvents, externalEvents })
+
+            const newInternal = internalEvents.map(elm => {
+                const newStart = formatDate(elm.start)
+                const newEnd = formatDate(elm.end)
+
+                return { ...elm.toObject(), start: newStart, end: newEnd }
+            });
+
+
+
+            res.render('event/event-list', { newInternal, externalEvents })
         })
         .catch(err => next(err))
 })
 
 
 // Create Event
-router.get('/event/event-create', isLoggedIn, checkRoles('ADMIN'),(req, res, next) => {
+router.get('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
     res.render('event/event-create')
 })
 
 router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
 
+
     const { title, description, category, start, end, city, lat, lng, eventImg, } = req.body;
+
+    const startFormated = formatDate(start);
+    console.log(startFormated);
+
     const location = {
         type: 'Point',
         coordinates: [lat, lng],
@@ -106,7 +121,7 @@ router.get('/:id/add', isLoggedIn, (req, res, next) => {
         User.findByIdAndUpdate(currentIdUser, { $push: { events: id } })
     ])
         .then(res.redirect('/user/profile'))
-        .catch(err => console.log(err));
+        .catch(err => next(err));
 })
 
 
@@ -119,7 +134,7 @@ router.post('/:id/delete', (req, res, next) => {
     Event
         .findByIdAndDelete(id)
         .then(() => res.redirect('/list'))
-        .catch(err => console.log(err))
+        .catch(err => next(err))
 })
 
 
