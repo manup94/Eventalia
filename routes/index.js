@@ -14,4 +14,7 @@ module.exports = app => {
 
     const mapRouter = require("./map.routes");
     app.use("/map", mapRouter);
+
+    const apiRouter = require("./api.routes");
+    app.use("/api", apiRouter);
 }

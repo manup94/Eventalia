@@ -5,6 +5,7 @@ const Event = require("../models/Event.model")
 
 const { isLoggedIn } = require('../middlewares/route-guard');
 const eventApiHandler = require('../services/event-api.services');
+const { formatDate } = require('../utils/formatDate');
 
 // event list
 router.get('/list', isLoggedIn, (req, res, next) => {
@@ -25,7 +26,6 @@ router.get('/list', isLoggedIn, (req, res, next) => {
 
             const internalEvents = promiseResults[0]
             const externalEvents = promiseResults[1].data.results
-            console.log('------------------------------------------------------------', internalEvents)
             res.render('event/event-list', { internalEvents, externalEvents })
         })
         .catch(err => next(err))

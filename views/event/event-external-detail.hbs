@@ -24,7 +24,7 @@
                 </li>
                 <br>
                 <div class="btn">
-                    <a href="/external-event/{{id}}/add" class="btn btn-dark">Save Event ❤️</a>
+                    <a href="/{{id}}/add" class="btn btn-dark">Save Event ❤️</a>
                 </div>
             </ul>
         </div>
@@ -45,3 +45,8 @@
     </div>
     {{/each}}
 </div>
+
+<script src="/js/eventsPoints.js"></script>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQ0r02Yba37PtZDZ55sV8s962Q1Hdtihw&callback=initViewMarkers">
+    </script>
