@@ -16,3 +16,15 @@
 //         title: 'Ironhack Matadero'
 //     })
 // }
+
+// window.addEventListener('load', () => {
+//     const ironhackBCN = {
+//         lat: 41.38623,
+//         lng: 2.17498
+//     };
+
+//     const map = new google.maps.Map(document.getElementById('map'), {
+//         zoom: 13,
+//         center: ironhackBCN
+//     });
+// });

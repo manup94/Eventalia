@@ -30,7 +30,7 @@ router.get('/:_id/edit', (req, res, next) => {
 
 router.post('/:_id/edit', (req, res, next) => {
 
-    const { username, email, interests } = req.body
+    const { username, email, interests, avatar } = req.body
 
     const { _id } = req.session.currentUser
 
@@ -40,11 +40,10 @@ router.post('/:_id/edit', (req, res, next) => {
     }
 
     User
-        .findByIdAndUpdate(_id, { username, email, interests, address })
+        .findByIdAndUpdate(_id, { username, email, interests, address, avatar })
         .then(() => res.redirect('/'))
         .catch(err => next(err))
 });
-
 
 //Delete
 router.post('/:_id/delete', (req, res, next) => {
