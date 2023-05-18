@@ -1,5 +1,11 @@
 module.exports = app => {
 
+    app.use((req, res, next) => {
+        res.locals.isAdmin = req.session.currentUser?.role === 'ADMIN'
+        next()
+    });
+
+
     const indexRouter = require("./index.routes");
     app.use("/", indexRouter);
 

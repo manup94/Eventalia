@@ -11,8 +11,6 @@
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
-
-
 <body>
    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
@@ -29,10 +27,8 @@
                <li class="nav-item">
                   <a class="nav-link" href="/list">Events</a>
                </li>
+
                {{#if loggedUsers}}
-               <li class="nav-item">
-                  <a class="nav-link" href="/event/event-create">Create Event</a>
-               </li>
                {{else}}
                <li class="nav-item">
                   <a class="nav-link" href="/auth/signup">Sign Up</a>
@@ -41,8 +37,13 @@
                   <a class="nav-link" href="/auth/login">Log in</a>
                </li>
                {{/if}}
+               {{#if isAdmin}}
+               <li class="nav-item">
+                  <a class="nav-link" href="/event/event-create">Create Event</a>
+               </li>
+               {{/if}}
             </ul>
-            {{!-- {{else}} --}}
+
             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                <ul class="navbar-nav ms-auto">
                   <li class="nav-item dropdown">
@@ -52,14 +53,16 @@
                         <img src="{{loggedUsers.avatar}}" style="width: 60%" alt="avatar" class="logo-img">
                         {{else}}
                         <img
-                           src="https://img.uxwing.com/wp-content/themes/uxwing/download/checkmark-cross/cross-icon.png"
-                           style="width: 50%" alt="default-avatar" class="logo-img">
+                           src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
+                           style="width: 60%" alt="default-avatar" class="logo-img">
                         {{/if}}
                      </a>
                      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                        <li><a class="dropdown-item" href="/user/profile">Profile</a></li>
+                        <form action="/user/profile" class="dropdown-item" method="POST">
+                           <a class="dropdown-item" href="/user/profile">Profile</a>
+                        </form>
                         <form action="/auth/logout" class="dropdown-item" method="POST">
-                           <button> Logout</button>
+                           <input type="submit" value="Logout" class="dropdown-item">
                         </form>
                      </ul>
                   </li>

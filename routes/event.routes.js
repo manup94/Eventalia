@@ -1,18 +1,15 @@
 const express = require('express');
 const router = require("express").Router()
 const User = require("../models/User.model")
-const Event = require("../models/Event.model")
+const Event = require("../models/event.model")
 
 const { isLoggedIn } = require('../middlewares/route-guard');
+const { checkRoles } = require('../middlewares/user-guard');
 const eventApiHandler = require('../services/event-api.services');
+
 
 // event list
 router.get('/list', isLoggedIn, (req, res, next) => {
-
-    const userRole = {
-        isAdmin: req.session.currentUser?.role === 'ADMIN',
-
-    }
 
     const promises = [
         Event.find(),
@@ -25,7 +22,6 @@ router.get('/list', isLoggedIn, (req, res, next) => {
 
             const internalEvents = promiseResults[0]
             const externalEvents = promiseResults[1].data.results
-            console.log('------------------------------------------------------------', internalEvents)
             res.render('event/event-list', { internalEvents, externalEvents })
         })
         .catch(err => next(err))
@@ -33,11 +29,11 @@ router.get('/list', isLoggedIn, (req, res, next) => {
 
 
 // Create Event
-router.get('/event/event-create', isLoggedIn, (req, res, next) => {
+router.get('/event/event-create', isLoggedIn, checkRoles('ADMIN'),(req, res, next) => {
     res.render('event/event-create')
 })
 
-router.post('/event/event-create', isLoggedIn, (req, res, next) => {
+router.post('/event/event-create', isLoggedIn, checkRoles('ADMIN'), (req, res, next) => {
 
     const { title, description, category, start, end, city, lat, lng, eventImg, } = req.body;
     const location = {

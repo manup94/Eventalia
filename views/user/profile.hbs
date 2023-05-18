@@ -37,7 +37,7 @@
             {{#each externalEvents}}
             <div class="col-md-4">
                 <p>{{id}}</p>
-                <h5><a class="text-decoration-none text-black" href="/event/{{id}}">{{title}}</a></h5>
+                <h5><a class="text-decoration-none text-black" href="/externalEvents/{{id}}">{{title}}</a></h5>
                 <article class="cards">
                     <img src="{{eventImg}}" style="width: 50%" alt="">
                 </article>
@@ -49,7 +49,7 @@
                 <a href="/" class="btn btn-dark mt-3 mb-5">Home</a>
             </div>
             <div class="btn">
-                <a href="/user/{{_id}}/edit" class="btn btn-dark mt-3 mb-5">Edit</a>
+                <a href="/user/{{_id}}/edit" class="btn btn-warning mt-3 mb-5">Edit</a>
             </div>
             <form action="/user/{{_id}}/delete" method="POST" style="display: inline">
                 <input type="submit" value="Delete" class="btn btn-danger mt-3 mb-5">

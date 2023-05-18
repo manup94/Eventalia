@@ -13,7 +13,7 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      default: 'https://img.uxwing.com/wp-content/themes/uxwing/download/checkmark-cross/cross-icon.png'
+      default: 'https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg'
     },
     interests: [
       {

@@ -12,6 +12,7 @@ require("./config")(app);
 require('./config/session.config')(app)
 
 app.use(loggedUsers);
+// app.use(isAdmin);
 
 require("./routes/index")(app)
 
