@@ -9,7 +9,7 @@ class EventApiHandler {
     }
 
     getEvents() {
-        return this.axiosApp.get('/events?country=ES', {
+        return this.axiosApp.get('/saved-locations/Vk4LvP0yM3tiCP784x3XNw/insights/events', {
             headers: {
                 'Authorization': process.env.API_KEY
             }
