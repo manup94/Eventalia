@@ -14,7 +14,7 @@ require('./config/session.config')(app)
 app.use(loggedUsers);
 // app.use(isAdmin);
 
-require("./routes/index")(app)
+require("./src/routes/index")(app)
 
 require("./error-handling")(app)
 

@@ -3,10 +3,10 @@ const router = require("express").Router()
 const User = require("../models/User.model")
 const Event = require("../models/Event.model")
 
-const { isLoggedIn } = require('../middlewares/route-guard');
-const { checkRoles } = require('../middlewares/user-guard');
-const eventApiHandler = require('../services/event-api.services');
-const { formatDate } = require('../utils/formatDate');
+const { isLoggedIn } = require('../../middlewares/route-guard');
+const { checkRoles } = require('../../middlewares/user-guard');
+const eventApiHandler = require('../../services/event-api.services');
+const { formatDate } = require('../../utils/formatDate');
 
 
 // event list
